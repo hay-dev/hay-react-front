@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Header.css';
 
 const propTypes = {
-
+   
 }
 
 class Header extends React.Component{
