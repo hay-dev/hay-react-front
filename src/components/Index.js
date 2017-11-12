@@ -11,7 +11,6 @@ class Index extends React.Component{
       </Provider>
     );
   }
-
 }
 
 export default Index;

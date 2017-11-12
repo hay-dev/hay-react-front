@@ -1,0 +1,39 @@
+.header{
+  position: fixed;
+  width: 70%;
+  left: 15%;
+}
+
+@media screen and (max-width: 825px) {
+  .header{
+    width: 100%;
+    left: 0%;
+  }
+}
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.header li {
+    float: right;
+}
+
+.header li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}

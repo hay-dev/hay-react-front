@@ -4,6 +4,8 @@ import styles from './Index.css';
 
 import axios from 'axios';
 
+import Header from './header/Header';
+
 
 class IndexPage extends React.Component{
 
@@ -16,8 +18,7 @@ class IndexPage extends React.Component{
   render(){
     return (
       <div>
-      sadaasdads asd 
-        asdasvasvasvasffasf
+      <Header/>
       </div>
     )
   }
