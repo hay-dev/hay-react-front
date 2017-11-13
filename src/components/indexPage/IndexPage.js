@@ -4,10 +4,15 @@ import styles from './Index.css';
 
 import axios from 'axios';
 
-import Header from './header/Header';
+import Header from '../header/Header';
 import PostItem from './postItem/PostITem';
 
 import InfiniteScroll from 'react-infinite-scroller';
+
+const headerActions = [
+  {icon: 'http://www.pvhc.net/img8/ntwogcpwkkqmawdgldgm.jpg', hoverIcon: 'http://www.pvhc.net/img8/mqpgzrngczkuhbhwkbqx.png', onAction: function(){console.log('test')}},
+    {icon: 'http://www.pvhc.net/img8/ntwogcpwkkqmawdgldgm.jpg', hoverIcon: 'http://www.pvhc.net/img8/mqpgzrngczkuhbhwkbqx.png', onAction: function(){console.log('test')}}
+]
 
 
 function createItem(page) {
@@ -47,12 +52,9 @@ class IndexPage extends React.Component{
   }
 
   render(){
-    let renderInfiniteContents = () => {
-
-    }
     return (
       <div>
-        <Header/>
+        <Header actions={headerActions}/>
         <div className={styles.contents}>
           <InfiniteScroll
             pageStart={0}
