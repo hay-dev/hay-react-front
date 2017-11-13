@@ -4,6 +4,7 @@ import styles from './PostItem.css';
 
 const propTypes = {
   summary: React.PropTypes.string.isRequired,
+  weather: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
   countOfComment: React.PropTypes.number.isRequired,
@@ -35,7 +36,7 @@ class PostItem extends React.Component{
         <div className={styles.content}>
           <div className={styles.header}>
             <span className={styles.title}>{this.props.title}</span>
-            <div className={styles.weather}></div>
+            <img className={styles.weather} src={this.props.weather}/>
           </div>
           <div className={styles.summary}>
           {this.props.summary}

@@ -16,6 +16,7 @@ function createItem(page) {
             summary={'asdasd'}
             date={'asdasd'}
             tags={['ㅁㄴㅇ', 'ㅁㄴㅇㅍ', 'ㅁㅇ']}
+            weather={'https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png'}
             countOfComment={2}
             countOfLike={8}
             onModify={function(){}}
