@@ -28,3 +28,7 @@ body::-webkit-scrollbar-thumb
   padding-top: 70px;
   width: 100%;
 }
+
+.footer{
+  height: 102px;
+}

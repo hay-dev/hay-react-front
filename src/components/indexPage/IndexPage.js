@@ -11,7 +11,17 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 
 function createItem(page) {
-  return (<PostItem id={page + 1} />)
+  return (<PostItem
+            title={'AI VUX 기획 밉문자를 위한 실전 TIP'}
+            summary={'asdasd'}
+            date={'asdasd'}
+            tags={['ㅁㄴㅇ', 'ㅁㄴㅇㅍ', 'ㅁㅇ']}
+            countOfComment={2}
+            countOfLike={8}
+            onModify={function(){}}
+            onDelete={function(){}}
+            onLookup={function(){}}
+            key={page + 1} />)
 }
 
 class IndexPage extends React.Component{
