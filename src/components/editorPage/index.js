@@ -60,6 +60,7 @@ class EditorPage extends React.Component{
               config={CKEditorConfig}
              />
              <Controller/>
+             <textarea className={styles.tags} placeholder={'#태그를_입력해_주세요'}></textarea>
           </div>
         </div>
       </div>
