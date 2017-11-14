@@ -19,6 +19,14 @@
   float: right;
 }
 
+.header .logo{
+  padding: 0;
+  width: auto;
+  height: 35px;
+  padding: 12px 3px;
+  margin: 0;
+}
+
 .header li > *{
   cursor: pointer;
   display: block;
@@ -32,8 +40,10 @@
   display: block;
   color: black;
   text-align: center;
-  width: 36px;
-  padding: 10px 10px;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  margin: 17px 7px;
   text-decoration: none;
 }
 

@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './components/Index';
-
-const APPS = {
-  Index
-};
+import ReactRouter from 'react-router';
+import { BrowserRouter as Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
+import App from './components/App';
+import IndexPage from './components/indexPage/IndexPage';
+import store from './store';
+import { Provider } from 'react-redux';
 
 function renderAppInElement(el) {
-  var App = APPS[el.id];
-  if (!App) return;
-
-  // get props from elements data attribute, like the post_id
-  const props = Object.assign({}, el.dataset);
-  ReactDOM.render(<App {...props} />, el);
+  ReactDOM.render(
+      <Provider store = {store}>
+        <Router history = {browserHistory}>
+          <Route exact path = "/" component = {IndexPage}/>
+        </Router>
+      </Provider>, el);
 }
 
 document
