@@ -1,0 +1,11 @@
+.floatingBtn{
+  position: fixed;
+  overflow: hidden;
+  height: 54px;
+  width: 54px;
+}
+
+.floatingBtn img{
+  width: 56px;
+  height: 56px;
+}

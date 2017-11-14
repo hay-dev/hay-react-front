@@ -4,13 +4,14 @@ import styles from './Index.css';
 
 import axios from 'axios';
 
-import Header from '../header/Header';
-import PostItem from './postItem/PostITem';
+import Header from '../header';
+import FloatingBtn from '../floatingButton';
+import PostItem from './postItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
 
 const headerActions = [
-  {icon: '/resources/navi/Personal_btn.svg', link: 'Test'},
+  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
   {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
   {icon: '/resources/navi/seach_btn.svg', link: 'Test'}
 ]
@@ -65,6 +66,7 @@ class IndexPage extends React.Component{
             {this.state.items}
           </InfiniteScroll>
         </div>
+        <FloatingBtn style={{'right':'30px', 'bottom':'50px'}} icon={'/resources/main/Writing_btn.svg'} link={'editor'}/>
       </div>
     )
   }

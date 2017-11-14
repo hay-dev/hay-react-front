@@ -1,0 +1,14 @@
+.content_controller{
+  position: absolute;
+  width: 30px;
+  height: 200px;
+  top: 250px;
+  right: -34px;
+}
+
+.content_controller .item{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px 0;
+}

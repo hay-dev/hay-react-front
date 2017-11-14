@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const propTypes = {
   className: React.PropTypes.string,
-  onAction: React.PropTypes.func.isRequired,
+  link: React.PropTypes.string.isRequired,
   defaultIcon: React.PropTypes.string.isRequired,
   hoverIcon: React.PropTypes.string
 }
@@ -31,7 +33,7 @@ class ActionItem extends React.Component{
   }
 
   render(){
-    return (<img onClick={this.props.doAction} className={this.props.className} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} src={this.state.icon}/>)
+    return (<Link to={this.props.link}><img onMouseLeave={this.mouseOut} className={this.props.className} onMouseOver={this.mouseOver} src={this.state.icon}/></Link>)
   }
 
 }

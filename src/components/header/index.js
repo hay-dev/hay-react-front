@@ -13,25 +13,26 @@ const propTypes = {
    }))
 }
 
-const headerIconUrl = '/resources/navi/logo.svg';
-
 class Header extends React.Component{
 
   constructor(props){
     super(props);
+
+    this.state = {
+    }
   }
 
   render(){
     let renderActionItems = (actions) =>{
       if(actions)
       return actions.map(function(actionItem, index){
-        return (<li key={index}><Link to={actionItem.link}><ActionItem defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/></Link></li>)
+        return (<li key={index}><ActionItem link={actionItem.link} defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/></li>)
       });
     }
     return (
       <div className={styles.header}>
         <ul>
-          <li style={{"float": "left"}}><Link to="/"><img className={styles.logo} src={headerIconUrl}/></Link></li>
+          <li style={{"float": "left"}}><Link to="/"><img className={styles.logo} src={'/resources/navi/logo.png'}/></Link></li>
             {renderActionItems(this.props.actions)}
         </ul>
       </div>
