@@ -32,7 +32,7 @@ class Header extends React.Component{
     return (
       <div className={styles.header}>
         <ul>
-          <li style={{"float": "left"}}><Link to="/"><img className={styles.logo} src={'/resources/navi/logo333.svg'}/></Link></li>
+          <li style={{"float": "left"}}><Link to="/"><img className={styles.logo} src={'/resources/navi/logo.png'}/></Link></li>
             {renderActionItems(this.props.actions)}
         </ul>
       </div>
