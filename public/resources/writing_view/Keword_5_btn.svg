@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="selec_btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 50 29" style="enable-background:new 0 0 50 29;" xml:space="preserve">
+<svg version="1.1" id="Keword_5_btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 50 29" style="enable-background:new 0 0 50 29;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#909090;}
-	.st1{fill:#777678;}
+	.st0{fill:none;stroke:#E9E9E9;}
+	.st1{fill:#909090;}
 	.st2{font-family:'NotoSansCJKkr-Regular-KSCpc-EUC-H';}
 	.st3{font-size:14px;}
 </style>
 <path id="Rounded_Rectangle_5" class="st0" d="M14.5,0.5h21c7.7,0,14,6.3,14,14l0,0c0,7.7-6.3,14-14,14h-21c-7.7,0-14-6.3-14-14l0,0
 	C0.5,6.8,6.8,0.5,14.5,0.5z"/>
-<text id="확인" transform="matrix(1 0 0 1 12.0007 19.8681)" class="st1 st2 st3">확인</text>
+<text id="일식" transform="matrix(1 0 0 1 12.0981 19.8671)" class="st1 st2 st3">일식</text>
 </svg>
