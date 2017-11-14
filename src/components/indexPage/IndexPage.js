@@ -10,8 +10,9 @@ import PostItem from './postItem/PostITem';
 import InfiniteScroll from 'react-infinite-scroller';
 
 const headerActions = [
-  {icon: 'http://www.pvhc.net/img8/ntwogcpwkkqmawdgldgm.jpg', hoverIcon: 'http://www.pvhc.net/img8/mqpgzrngczkuhbhwkbqx.png', onAction: function(){console.log('test')}},
-    {icon: 'http://www.pvhc.net/img8/ntwogcpwkkqmawdgldgm.jpg', hoverIcon: 'http://www.pvhc.net/img8/mqpgzrngczkuhbhwkbqx.png', onAction: function(){console.log('test')}}
+  {icon: '/resources/navi/Personal_btn.svg', onAction: function(){console.log('test')}},
+  {icon: '/resources/navi/follower_btn.svg', onAction: function(){console.log('test')}},
+  {icon: '/resources/navi/seach_btn.svg', onAction: function(){console.log('test')}}
 ]
 
 

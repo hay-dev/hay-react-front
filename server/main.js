@@ -20,8 +20,9 @@ if(process.env.NODE_ENV == 'development') {
     });
 }
 
+app.use('/resources', express.static('public/resources'));
 app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+  response.sendFile(path.join(__dirname + '/../public/index.html'))
 })
 
 const server = app.listen(port, () => {
