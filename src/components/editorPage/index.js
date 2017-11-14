@@ -30,6 +30,7 @@ const CKEditorConfig = { toolbarGroups : [
 		{ name: 'others', groups: [ 'others' ] },
 		{ name: 'about', groups: [ 'about' ] }],
     removeButtons:'Print,Preview,NewPage,Save,Source,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Form,Scayt,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Underline,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,CreateDiv,BidiLtr,BidiRtl,Language,Link,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About',
+    height: 500,
     uiColor: '#ffffff',
     resize_enabled: false,
     removePlugins: 'elementspath'

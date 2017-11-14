@@ -13,8 +13,11 @@ class Controller extends React.Component{
 
   render(){
     return (
-      <div>
-        
+      <div className={styles.content_controller}>
+        <img className={styles.item} src={'/resources/writing_view/weather_btn.svg'}/>
+        <img className={styles.item} src={'/resources/writing_view/img_btn.svg'}/>
+        <img className={styles.item} src={'/resources/writing_view/map_btn.svg'}/>
+        <img className={styles.item} src={'/resources/writing_view/line_btn.svg'}/>
       </div>
     )
   }
