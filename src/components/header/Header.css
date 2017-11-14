@@ -27,11 +27,16 @@
   margin: 0;
 }
 
+.header li a{
+  display: block;
+  margin: 0 2px;
+}
+
 .header li img{
   display: block;
   color: black;
   text-align: center;
-  width: 25px;
+  width: auto;
   height: 25px;
   padding: 0;
   margin: 17px 7px;

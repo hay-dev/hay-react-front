@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import ReactRouter from 'react-router';
 import { BrowserRouter as Router, Route, browserHistory, IndexRoute } from 'react-router-dom';
 import App from './components/App';
-import IndexPage from './components/indexPage/IndexPage';
+import IndexPage from './components/indexPage';
+import EditorPage from './components/editorPage';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -13,6 +14,7 @@ function renderAppInElement(el) {
         <Router history = {browserHistory}>
           <div>
             <Route exact path = "/" component = {IndexPage}/>
+            <Route exact path = "/editor" component = {EditorPage}/>
             <Route exact path = "/Test" component = {IndexPage}/>
           </div>
         </Router>

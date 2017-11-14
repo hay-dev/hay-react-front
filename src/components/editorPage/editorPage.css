@@ -1,0 +1,37 @@
+.contents{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  width: 100%;
+}
+
+.editor{
+  margin-top: 80px;
+  width: 720px;
+}
+
+.editor .date{
+  height: 18px;
+  font-family: NotoSansCJKkr;
+  font-size: 24px;
+  line-height: 1.25px;
+  color: #777678;
+  margin-bottom: 32px;
+}
+
+.editor .title{
+  height: 51px;
+  width: 100%;
+  resize: none;
+  white-space: nowrap;
+  overflow-x: scroll;
+  font-family: NotoSansCJKkr;
+  font-size: 46px;
+  color: #333333;
+  overflow: hidden;
+  border: none;
+  overflow: hidden;
+  outline:none;
+  margin-bottom: 75px;
+}
