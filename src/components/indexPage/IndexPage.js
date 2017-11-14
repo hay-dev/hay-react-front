@@ -10,9 +10,9 @@ import PostItem from './postItem/PostITem';
 import InfiniteScroll from 'react-infinite-scroller';
 
 const headerActions = [
-  {icon: '/resources/navi/Personal_btn.svg', onAction: function(){console.log('test')}},
-  {icon: '/resources/navi/follower_btn.svg', onAction: function(){console.log('test')}},
-  {icon: '/resources/navi/seach_btn.svg', onAction: function(){console.log('test')}}
+  {icon: '/resources/navi/Personal_btn.svg', link: 'Test'},
+  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
+  {icon: '/resources/navi/seach_btn.svg', link: 'Test'}
 ]
 
 

@@ -23,20 +23,11 @@
   padding: 0;
   width: auto;
   height: 35px;
-  padding: 12px 3px;
+  padding: 13px 3px 5px 3px;
   margin: 0;
 }
 
-.header li > *{
-  cursor: pointer;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.header li > img{
+.header li img{
   display: block;
   color: black;
   text-align: center;

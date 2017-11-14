@@ -11,7 +11,10 @@ function renderAppInElement(el) {
   ReactDOM.render(
       <Provider store = {store}>
         <Router history = {browserHistory}>
-          <Route exact path = "/" component = {IndexPage}/>
+          <div>
+            <Route exact path = "/" component = {IndexPage}/>
+            <Route exact path = "/Test" component = {IndexPage}/>
+          </div>
         </Router>
       </Provider>, el);
 }
