@@ -31,6 +31,7 @@ class PostItem extends React.Component{
               <span className={styles.location}>{this.props.location}</span>
               <span className={styles.date}>{this.props.date}</span>
             </div>
+            <ImageButton className={styles.likeBtn} defaultIcon={'/resources/writing/honluv_icon_off.svg'} hoverIcon={'/resources/writing/honluv_icon_on.svg'}/>
           </div>
         </div>
       </div>
