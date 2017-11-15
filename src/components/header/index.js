@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Header.css';
 import { Link } from 'react-router-dom';
 
-import ActionItem from './ActionItem';
+import ImageButton from '../imageButton';
 
 const propTypes = {
   actions: React.PropTypes.arrayOf(React.PropTypes.shape({
@@ -26,7 +26,11 @@ class Header extends React.Component{
     let renderActionItems = (actions) =>{
       if(actions)
       return actions.map(function(actionItem, index){
-        return (<li key={index}><ActionItem link={actionItem.link} defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/></li>)
+        return (<li key={index}>
+                  <Link to={actionItem.link}>
+                    <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/>
+                  </Link>
+                </li>)
       });
     }
     return (

@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 
 const propTypes = {
   className: React.PropTypes.string,
-  link: React.PropTypes.string.isRequired,
+  onClick: React.PropTypes.func,
   defaultIcon: React.PropTypes.string.isRequired,
   hoverIcon: React.PropTypes.string
 }
 
 const defaultProps = {
-  styleName: ''
+  className: ''
 }
 
-class ActionItem extends React.Component{
+class ImageButton extends React.Component{
   constructor(props) {
       super(props);
       this.mouseOver = this.mouseOver.bind(this);
@@ -33,12 +33,12 @@ class ActionItem extends React.Component{
   }
 
   render(){
-    return (<Link to={this.props.link}><img onMouseLeave={this.mouseOut} className={this.props.className} onMouseOver={this.mouseOver} src={this.state.icon}/></Link>)
+    return (<img onClick={this.props.onClick} onMouseLeave={this.mouseOut} className={this.props.className} onMouseOver={this.mouseOver} src={this.state.icon}/>)
   }
 
 }
 
-ActionItem.propTypes = propTypes;
-ActionItem.defaultProps = defaultProps;
+ImageButton.propTypes = propTypes;
+ImageButton.defaultProps = defaultProps;
 
-export default ActionItem;
+export default ImageButton;
