@@ -57,11 +57,22 @@ class SearchPage extends React.Component{
   }
 
   render(){
+    let renderKetWords = (keywords) => {
+      return keywords.map(function(keyword){
+        return (<div className={styles.keyword}>{keyword}</div>)
+      });
+    }
     return (
       <div>
         <Header actions={headerActions}/>
         <div className={styles.contents}>
            <div className={styles.search_content}>
+           <textarea className={styles.searchBar}>가나다라</textarea>
+           <div className={styles.keywords}>
+            <div className={styles.context}>
+              {renderKetWords(['테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라'])}
+            </div>
+           </div>
             <InfiniteScroll
               pageStart={0}
               loadMore={this.loadPostItem}

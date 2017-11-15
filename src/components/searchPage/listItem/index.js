@@ -24,7 +24,7 @@ class PostItem extends React.Component{
           <div className={styles.profileImg}><img src={this.props.profileImg}/></div>
           <div className={styles.subInfo}>
             <div>
-              <span>{this.props.writer}</span>
+              <span className={styles.name}>{this.props.writer}</span>
               <ImageButton className={styles.fallowBtn} defaultIcon={'/resources/writing/following_btn_off.svg'} hoverIcon={'/resources/writing/following_btn_on.svg'}/>
             </div>
             <div>

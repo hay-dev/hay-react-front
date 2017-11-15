@@ -55,6 +55,7 @@
 .listItem .footer .fallowBtn{
   width: 65px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .listItem .footer .location{
