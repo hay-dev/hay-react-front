@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, browserHistory, IndexRoute } from 'reac
 import App from './components/App';
 import IndexPage from './components/indexPage';
 import EditorPage from './components/editorPage';
+import SearchPage from './components/searchPage';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -15,6 +16,7 @@ function renderAppInElement(el) {
           <div>
             <Route exact path = "/" component = {IndexPage}/>
             <Route exact path = "/editor" component = {EditorPage}/>
+            <Route exact path = "/search" component = {SearchPage}/>
             <Route exact path = "/Test" component = {IndexPage}/>
           </div>
         </Router>

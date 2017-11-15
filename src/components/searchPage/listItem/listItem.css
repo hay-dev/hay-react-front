@@ -1,23 +1,69 @@
 .listItem{
-
+  width: 100%;
+  margin-bottom: 45px;
+  padding-bottom: 45px;
+  border-bottom: solid 1px #e9e9e9;
 }
 
 .listItem .title{
-
+  font-family: NotoSansCJKkr;
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 23px;
 }
 
 .listItem .summary{
-
+  font-family: NotoSansCJKkr;
+  font-size: 16px;
+  color: #909090;
+  margin-bottom: 25px;
 }
 
-.listItem .footer{
-
+.listItem .footer, .listItem .footer .subInfo > *{
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .listItem .footer .profileImg{
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-right: 10px;
+}
 
+.listItem .footer .profileImg > img{
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.listItem .footer .subInfo{
+  display: inline-block;
 }
 
 .listItem .footer .name{
+  font-size: 24px;
+  color: #333333;
+}
 
+.listItem .footer .fallowBtn{
+  width: 65px;
+  margin-left: 5px;
+}
+
+.listItem .footer .location{
+  font-size: 12px;
+  color: #909090;
+  margin-right: 10px;
+}
+
+.listItem .footer .date{
+  font-size: 12px;
+  color: #909090;
 }
