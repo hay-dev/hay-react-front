@@ -12,3 +12,53 @@
   height: 30px;
   margin: 5px 0;
 }
+
+.controller_modal{
+  position: absolute;
+  border: solid 1px #909090;
+  z-index: 1;
+  opacity: 0;
+  animation: 1s forwards fadein;
+}
+
+.controller_modal .context{
+  position: relative;
+  background: white;
+}
+
+.controller_modal .context:after{
+  position: absolute;
+  content: '';
+  right: -1px;
+  top: 46px;
+  width: 1px;
+  height: 20px;
+  background: white;
+}
+
+.controller_modal .context:before{
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: 45px;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #909090;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.controller_modal .context > *{
+  background: white;
+  width: 398px;
+  min-height: 120px;
+}
+
+@keyframes :local(fadein) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
