@@ -18,7 +18,9 @@
   border: solid 1px #909090;
   z-index: 1;
   opacity: 0;
-  animation: 1s forwards fadein;
+  animation-duration: 300ms;
+  animation-name: fadein;
+  animation-fill-mode: forwards;
 }
 
 .controller_modal .context{
@@ -54,7 +56,7 @@
   min-height: 120px;
 }
 
-@keyframes :local(fadein) {
+@keyframes fadein {
   from {
     opacity: 0;
   }
