@@ -1,0 +1,63 @@
+.contents{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  width: 100%;
+}
+
+.lookup_content{
+  width: 720px;
+  padding-top: 58px;
+}
+
+.lookup_content .header{
+  border-bottom: solid 1px #e9e9e9;
+  padding-bottom: 37px;
+  margin-bottom: 46px;
+}
+
+.lookup_content .title{
+  font-size: 56px;
+  color: #333333;
+}
+
+.lookup_content .content {
+  margin: 35px 0 80px 0;
+  width: 100%;
+}
+
+.lookup_content .keywords{
+  display: flex;
+  width: 100%;
+  padding: 31px 0 0 0;
+}
+
+.lookup_content .keywords .guide{
+  width: 60px;
+  margin-right: 15px;
+  font-family: NotoSansCJKkr;
+  font-size: 16px;
+  color: #cccccc;
+}
+
+.lookup_content .keywords .context{
+  width: calc(100% - 60px);
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 40px;
+}
+
+.lookup_content .keywords .context .keyword{
+  max-height: 28px;
+  cursor: pointer;
+  font-family: NotoSansCJKkr;
+  font-size: 14px;
+  color: #909090;
+  border: solid 1px #e9e9e9;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 5px 8px;
+  display: inline-block;
+}

@@ -4,17 +4,11 @@ import styles from './Index.css';
 
 import axios from 'axios';
 
-import Header from '../header';
-import FloatingBtn from '../floatingButton';
+import Header from '../global/header';
+import FloatingBtn from '../global/floatingButton';
 import PostItem from './postItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
-
-const headerActions = [
-  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
-  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
-  {icon: '/resources/navi/seach_btn.svg', link: 'search'}
-]
 
 
 function createItem(page) {
@@ -56,7 +50,7 @@ class IndexPage extends React.Component{
   render(){
     return (
       <div>
-        <Header actions={headerActions}/>
+        <Header/>
         <div className={styles.contents}>
           <InfiniteScroll
             pageStart={0}
