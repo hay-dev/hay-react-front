@@ -10,6 +10,11 @@ import ImageButton from '../global/imageButton';
 import UserInfo from '../global/userInfo';
 import Comments from './comments';
 
+const headerActions = [
+  {icon: '/resources/main/delect_btn_off.svg', hoverIcon:'/resources/main/delect_btn_on.svg', link: 'Test'},
+  {icon: '/resources/main/adjust_btn_off.svg', hoverIcon:'/resources/main/adjust_btn_on.svg', link: 'Test'}
+]
+
 class ViewPage extends React.Component{
 
   constructor(props){
@@ -32,7 +37,7 @@ class ViewPage extends React.Component{
     }
     return (
       <div>
-        <Header/>
+        <Header actions={headerActions}/>
         <div className={styles.contents}>
           <div className={styles.lookup_content}>
             <UserInfo className={styles.header}
