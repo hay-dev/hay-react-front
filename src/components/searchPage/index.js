@@ -4,17 +4,11 @@ import styles from './Index.css';
 
 import axios from 'axios';
 
-import Header from '../header';
-import FloatingBtn from '../floatingButton';
+import Header from '../global/header';
+import FloatingBtn from '../global/floatingButton';
 import ListItem from './listItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
-
-const headerActions = [
-  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
-  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
-  {icon: '/resources/navi/seach_btn.svg', link: 'Test'}
-]
 
 const itemList = [{title : 'AI VUX 기획 입문자를 위한 실전 Tip',
                   content: '지난겨울 한창 휴가를 즐기던 중 새로운 프로젝트가 시작되었다는 소식에 마지막 여행코스를 돌지 못하고 급히 복귀하게 되었습니다. 당시 만나게 된 그 새 프로젝트는 음성인식 스피커의 음성 인터페이스를 설계하는 것이었고 필자는 잠시 머릿속이 텅 비는 경험을 했었습니다. 사실 Voice UX는 생소한 것이 아니라 예전부터 있었습니다만 왜 과거 피처폰 시절에 스마트폰 UI를 설계해야 했을 때처럼 생소하고 또 당황했을까요? (필자만 그렇다면 이 글을 읽는 당신은 이미 입문자가 아닙니다.)',
@@ -26,6 +20,7 @@ const itemList = [{title : 'AI VUX 기획 입문자를 위한 실전 Tip',
 function createItem(page) {
   let listItemData = itemList[0];
   return (<ListItem
+            key={page}
             title={listItemData.title}
             content={listItemData.content}
             date={listItemData.date}
@@ -64,7 +59,7 @@ class SearchPage extends React.Component{
     }
     return (
       <div>
-        <Header actions={headerActions}/>
+        <Header/>
         <div className={styles.contents}>
            <div className={styles.search_content}>
            <textarea className={styles.searchBar}>가나다라</textarea>

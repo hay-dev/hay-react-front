@@ -5,12 +5,9 @@ import axios from 'axios';
 import styles from './editorPage.css';
 import Controller from './controller';
 
-import Header from '../header';
+import Header from '../global/header';
 
 const headerActions = [
-  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
-  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
-  {icon: '/resources/navi/seach_btn.svg', link: 'Test'},
   {icon: '/resources/writing_view/save_btn_off.svg', hoverIcon:'/resources/writing_view/save_btn_on.svg', link: 'Test'}
 ]
 

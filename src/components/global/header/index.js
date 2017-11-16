@@ -13,6 +13,16 @@ const propTypes = {
    }))
 }
 
+const defaultProps = {
+  actions: []
+}
+
+const defaultHeaderActions = [
+  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
+  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
+  {icon: '/resources/navi/seach_btn.svg', link: 'search'}
+]
+
 class Header extends React.Component{
 
   constructor(props){
@@ -37,14 +47,14 @@ class Header extends React.Component{
       <div className={styles.header}>
         <ul>
           <li style={{"float": "left"}}><Link to="/"><img className={styles.logo} src={'/resources/navi/logo.png'}/></Link></li>
-            {renderActionItems(this.props.actions)}
+            {renderActionItems([...defaultHeaderActions, ...this.props.actions])}
         </ul>
       </div>
     )
   }
-
 }
 
 Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;
