@@ -4,6 +4,7 @@ import styles from './UserInfo.css';
 import ImageButton from '../imageButton';
 
 const propTypes = {
+  className: React.PropTypes.string,
   profileImg: React.PropTypes.string.isRequired,
   writer: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
@@ -31,7 +32,7 @@ class UserInfo extends React.Component{
                 hoverIcon={actionBtn.hoverIcon}/>
     }
     return (
-      <div className={styles.userInfo}>
+      <div className={styles.userInfo+(this.props.className?' '+this.props.className:'')}>
         <div className={styles.profileImg}><img src={this.props.profileImg}/></div>
         <div className={styles.subInfo}>
           <div>
