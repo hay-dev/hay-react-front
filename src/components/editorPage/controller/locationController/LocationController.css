@@ -33,9 +33,13 @@
   cursor: pointer;
   width: calc(100% - 5px);
   padding-left: 2px;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+  padding-bottom: 7px;
+  margin-bottom: 5px;
   border-bottom: 1px solid black;
+}
+
+.locationController .content .locationList .addr h6{
+  margin: 0;
 }
 
 .locationController .content .locationList .thumbnail{

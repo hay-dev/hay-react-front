@@ -51,6 +51,7 @@
 }
 
 .controller_modal .context > *{
+  position: relative;
   background: white;
   width: 370px;
   min-height: 120px;

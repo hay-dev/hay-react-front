@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styles from './LocationController.css';
 
-let apiUrl = 'http://www.juso.go.kr/addrlink/addrLinkApi.do?currentPage=1&countPerPage=10&resultType=json&confmKey=U01TX0FVVEgyMDE3MTExNzE5NTEwNDEwNzQ5MTE=&keyword=';
+let apiUrl = 'http://www.juso.go.kr/addrlink/addrLinkApi.do?currentPage=1&countPerPage=30&resultType=json&confmKey=U01TX0FVVEgyMDE3MTExNzE5NTEwNDEwNzQ5MTE=&keyword=';
 
 const propTypes = {
   onAddressSelected: React.PropTypes.func.isRequired
@@ -24,8 +24,9 @@ class LocationController extends React.Component{
     axios.get(apiUrl+this.state.searchText)
       .then(function (response) {
         if(response.data.results.common.errorMessage=='정상'){
+          console.log(response.data.results.juso);
           let addressList = response.data.results.juso.map(function(addr){
-            return addr.jibunAddr;
+            return {name:addr.bdNm, detail:addr.jibunAddr};
           });
           _self.setState({addressList: addressList});
         }else{
@@ -39,7 +40,10 @@ class LocationController extends React.Component{
       let _self = this;
       if(addressList&&addressList.length>0){
         return addressList.map(function(addr, idx){
-          return (<div key={addr+idx} onClick={()=>_self.props.onAddressSelected(addr)} className={styles.addr}>{addr}</div>)
+          return (<div key={addr+idx} onClick={()=>_self.props.onAddressSelected(addr)} className={styles.addr}>
+            {addr.name}
+            <h6>{addr.detail}</h6>
+          </div>)
         });
       }else{
         return (<img className={styles.thumbnail} src={'/resources/writing_view/location_icon.png'}/>)

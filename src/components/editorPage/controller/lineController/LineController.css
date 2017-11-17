@@ -1,0 +1,32 @@
+.lineController{
+  padding: 15px;
+}
+
+.lineController hr{
+  cursor: pointer;
+  margin-bottom: 18px;
+  padding: 2px 0;
+}
+.lineController hr:last-child{
+  margin-bottom: 0;
+}
+
+.lineController .line_boldx2{
+  border-top: 3px solid;
+}
+
+.lineController .line_bold{
+  border-top: 2px solid;
+}
+
+.lineController .line_solid{
+
+}
+
+.lineController .line_thin{
+  border-top: 0.5px solid #e9e9e9;
+}
+
+.lineController .line_dotted{
+  border-top: 2px dotted;
+}

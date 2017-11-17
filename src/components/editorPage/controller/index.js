@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './controller.css';
-import LocationController from './LocationController';
+import LocationController from './locationController';
+import LineController from './lineController';
 
 const Weather = 'weather-modal';
 const Image = 'image-modal';
@@ -9,7 +10,8 @@ const Location = 'location-modal';
 const Line = 'line-modal';
 
 const propTypes = {
-  onAddressSelected: React.PropTypes.func.isRequired
+  onAddressSelected: React.PropTypes.func.isRequired,
+  onLineSelected: React.PropTypes.func.isRequired
 }
 
 class Controller extends React.Component{
@@ -36,18 +38,21 @@ class Controller extends React.Component{
 
   render(){
     let getModal = (modal) => {
+      console.log(modal);
       switch (modal){
         case Weather:
           return <LocationController/>;
         case Location:
           return <LocationController onAddressSelected={this.props.onAddressSelected}/>
+        case Line:
+          return <LineController onLineSelected={this.props.onLineSelected}/>
       }
         return <LocationController/>;
     }
     let renderModal = (modal) => {
       if(modal){
       return (<div key={modal} style={{'right':this.state.x, 'top':this.state.y}} className={styles.controller_modal}><div className={styles.context}>
-          {getModal()}
+          {getModal(modal)}
           </div></div>)
       }
     }
