@@ -18,9 +18,9 @@ const defaultProps = {
 }
 
 const defaultHeaderActions = [
-  {icon: '/resources/navi/Personal_btn.svg', link: 'Editor'},
-  {icon: '/resources/navi/follower_btn.svg', link: 'Test'},
-  {icon: '/resources/navi/seach_btn.svg', link: 'search'}
+  {icon: '/resources/navi/Personal_btn.svg', link: '/profile'},
+  {icon: '/resources/navi/follower_btn.svg', link: '/Test'},
+  {icon: '/resources/navi/seach_btn.svg', link: '/search'}
 ]
 
 class Header extends React.Component{

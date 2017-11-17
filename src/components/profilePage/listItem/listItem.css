@@ -1,0 +1,26 @@
+.listItem{
+  width: 100%;
+  margin-bottom: 45px;
+  padding: 5px 0;
+  border-bottom: solid 1px #e9e9e9;
+}
+
+.listItem .title{
+  font-family: NotoSansCJKkr;
+  font-size: 24px;
+  color: #333333;
+}
+
+.listItem span{
+  display: inline-block;
+  color: #909090;
+  margin-right: 20px;
+  margin-bottom: 17px;
+}
+
+.listItem .summary{
+  font-family: NotoSansCJKkr;
+  font-size: 16px;
+  color: #909090;
+  margin-bottom: 25px;
+}
