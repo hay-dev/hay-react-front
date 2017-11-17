@@ -11,7 +11,8 @@ const Line = 'line-modal';
 
 const propTypes = {
   onAddressSelected: React.PropTypes.func.isRequired,
-  onLineSelected: React.PropTypes.func.isRequired
+  onLineSelected: React.PropTypes.func.isRequired,
+  onImageSelected: React.PropTypes.func.isRequired
 }
 
 class Controller extends React.Component{
@@ -22,6 +23,7 @@ class Controller extends React.Component{
     this.state = {
       modal: ''
     }
+    this.imageLoad = this.imageLoad.bind(this);
   }
 
   toggleDialog(e, modal){
@@ -36,24 +38,45 @@ class Controller extends React.Component{
     });
   }
 
+  imageLoad(){
+    var fr = new FileReader();
+      fr.onload = (e)=> {
+        let data = e.target.result;
+        if(data){
+          this.props.onImageSelected(data);
+        }
+      };
+      var inputElement = document.createElement("input");
+      inputElement.type = "file";
+      inputElement.addEventListener("change", function(){
+        fr.readAsDataURL(inputElement.files[0]);
+      });
+      inputElement.dispatchEvent(new MouseEvent("click"));
+
+  }
+
   render(){
     let getModal = (modal) => {
-      console.log(modal);
       switch (modal){
-        case Weather:
-          return <LocationController/>;
         case Location:
           return <LocationController onAddressSelected={this.props.onAddressSelected}/>
         case Line:
           return <LineController onLineSelected={this.props.onLineSelected}/>
+        case Image:
+          this.imageLoad();
+          return;
       }
-        return <LocationController/>;
     }
     let renderModal = (modal) => {
       if(modal){
-      return (<div key={modal} style={{'right':this.state.x, 'top':this.state.y}} className={styles.controller_modal}><div className={styles.context}>
-          {getModal(modal)}
-          </div></div>)
+        let modalContext = getModal(modal);
+        if(modalContext)
+          return (<div key={modal} style={{'right':this.state.x, 'top':this.state.y}} className={styles.controller_modal}><div className={styles.context}>
+              {modalContext}
+            </div></div>)
+        else{
+            this.setState({modal:undefined});
+        }
       }
     }
     return (
