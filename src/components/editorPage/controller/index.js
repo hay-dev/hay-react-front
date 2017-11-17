@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './controller.css';
 import LocationController from './locationController';
 import LineController from './lineController';
+import WeatherController from './weatherController';
 
 const Weather = 'weather-modal';
 const Image = 'image-modal';
@@ -12,7 +13,8 @@ const Line = 'line-modal';
 const propTypes = {
   onAddressSelected: React.PropTypes.func.isRequired,
   onLineSelected: React.PropTypes.func.isRequired,
-  onImageSelected: React.PropTypes.func.isRequired
+  onImageSelected: React.PropTypes.func.isRequired,
+  onWeatherSelected: React.PropTypes.func.isRequired
 }
 
 class Controller extends React.Component{
@@ -58,6 +60,8 @@ class Controller extends React.Component{
   render(){
     let getModal = (modal) => {
       switch (modal){
+        case Weather:
+          return <WeatherController onWeatherSelected={this.props.onWeatherSelected}/>
         case Location:
           return <LocationController onAddressSelected={this.props.onAddressSelected}/>
         case Line:

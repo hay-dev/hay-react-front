@@ -44,12 +44,18 @@ class EditorPage extends React.Component{
     this.state = {
       title: '제목을 적어주세요',
       content: '당신의 하루를 적어주세요.',
-      address: ''
+      address: '',
+      weather: ''
     }
     this.onAddressSelected = this.onAddressSelected.bind(this);
     this.onLineSelected = this.onLineSelected.bind(this);
     this.onImageSelected = this.onImageSelected.bind(this);
+    this.onWeatherSelected = this.onWeatherSelected.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  onWeatherSelected(weather){
+    this.setState({weather});
   }
 
   onAddressSelected(address){
@@ -99,6 +105,7 @@ class EditorPage extends React.Component{
                onAddressSelected= {this.onAddressSelected}
                onLineSelected= {this.onLineSelected}
                onImageSelected= {this.onImageSelected}
+               onWeatherSelected = {this.onWeatherSelected}
              />
              <textarea className={styles.tags} placeholder={'#태그를_입력해_주세요'}></textarea>
           </div>
