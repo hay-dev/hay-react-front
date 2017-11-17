@@ -6,6 +6,7 @@ import styles from './editorPage.css';
 import Controller from './controller';
 
 import Header from '../global/header';
+import Footer from '../global/footer';
 
 const headerActions = [
   {icon: '/resources/writing_view/save_btn_off.svg', hoverIcon:'/resources/writing_view/save_btn_on.svg', link: 'Test'}
@@ -110,6 +111,7 @@ class EditorPage extends React.Component{
              <textarea className={styles.tags} placeholder={'#태그를_입력해_주세요'}></textarea>
           </div>
         </div>
+        <Footer/>
       </div>
     )
   }

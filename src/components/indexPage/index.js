@@ -5,6 +5,7 @@ import styles from './Index.css';
 import axios from 'axios';
 
 import Header from '../global/header';
+import Footer from '../global/footer';
 import FloatingBtn from '../global/floatingButton';
 import PostItem from './postItem';
 
@@ -60,7 +61,8 @@ class IndexPage extends React.Component{
             {this.state.items}
           </InfiniteScroll>
         </div>
-        <FloatingBtn style={{'right':'30px', 'bottom':'50px'}} icon={'/resources/main/Writing_btn.svg'} link={'editor'}/>
+        <FloatingBtn style={{'right':'30px', 'bottom':'90px'}} icon={'/resources/main/Writing_btn.svg'} link={'editor'}/>
+        <Footer/>
       </div>
     )
   }

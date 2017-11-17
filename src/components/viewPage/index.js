@@ -5,6 +5,7 @@ import styles from './ViewPage.css';
 import axios from 'axios';
 
 import Header from '../global/header';
+import Footer from '../global/footer';
 import FloatingBtn from '../global/floatingButton';
 import ImageButton from '../global/imageButton';
 import UserInfo from '../global/userInfo';
@@ -70,8 +71,9 @@ class ViewPage extends React.Component{
             <Comments comments={this.state.comments} onWriteComment={this.onWriteComment} profileImg={this.state.profileImg}/>
           </div>
         </div>
-        <FloatingBtn style={{'right':'30px', 'bottom':'100px'}} icon={'/resources/main/Writing_btn.svg'} link={'editor'}/>
-        <FloatingBtn style={{'right':'30px', 'bottom':'50px'}} icon={'/resources/main/Writing_btn.svg'} link={'editor'}/>
+        <Footer/>
+        <FloatingBtn style={{'right':'30px', 'bottom':'160px'}} icon={'/resources/writing/honluv_icon_on.svg'} link={'editor'}/>
+        <FloatingBtn style={{'right':'30px', 'bottom':'90px'}} icon={'/resources/writing/reply_btn.svg'} link={'editor'}/>
       </div>
     )
   }
