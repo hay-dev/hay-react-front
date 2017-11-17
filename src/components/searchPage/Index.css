@@ -80,3 +80,9 @@ body::-webkit-scrollbar-thumb
   padding: 5px 8px;
   display: inline-block;
 }
+
+@media screen and (max-width: 720px) {
+  .search_content{
+    width: 90%;
+  }
+}

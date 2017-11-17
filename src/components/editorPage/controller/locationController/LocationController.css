@@ -1,0 +1,80 @@
+.locationController{
+  position: relative;
+  width: 100%;
+}
+
+.locationController .content{
+  padding: 15px;
+}
+
+.locationController .content .locationList{
+  height: 250px;
+  overflow: auto;
+}
+
+.locationController .content .locationList::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+.locationController .content .locationList::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #F5F5F5;
+}
+
+.locationController .content .locationList::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+
+.locationController .content .locationList .addr{
+  cursor: pointer;
+  width: calc(100% - 5px);
+  padding-left: 2px;
+  padding-bottom: 7px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+.locationController .content .locationList .addr h6{
+  margin: 0;
+}
+
+.locationController .content .locationList .thumbnail{
+  position: absolute;
+  width: 60px;
+  height: 90px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+.locationController .searchBar{
+  width: 98%;
+  height: 30px;
+  padding-left: 5px;
+  resize: none;
+  white-space: nowrap;
+  font-family: NotoSansCJKkr;
+  font-size: 16px;
+  color: #333333;
+  border: none;
+  outline:none;
+  overflow: hidden;
+  border-bottom: solid 1px #909090;
+}
+
+.locationController .searchBtn{
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  width: 23px;
+  height: 23px;
+}
+
+.locationController .thumbnail{
+
+}
