@@ -8,6 +8,10 @@ const Image = 'image-modal';
 const Location = 'location-modal';
 const Line = 'line-modal';
 
+const propTypes = {
+  onAddressSelected: React.PropTypes.func.isRequired
+}
+
 class Controller extends React.Component{
 
   constructor(props){
@@ -35,6 +39,8 @@ class Controller extends React.Component{
       switch (modal){
         case Weather:
           return <LocationController/>;
+        case Location:
+          return <LocationController onAddressSelected={this.props.onAddressSelected}/>
       }
         return <LocationController/>;
     }
@@ -57,4 +63,7 @@ class Controller extends React.Component{
   }
 
 }
+
+Controller.propTypes = propTypes;
+
 export default Controller;
