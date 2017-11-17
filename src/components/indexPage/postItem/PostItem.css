@@ -93,3 +93,23 @@
   border-radius: 30px;
   border: 1px solid #c6c3be;
 }
+
+@media screen and (max-width: 620px) {
+  .postItem{
+    width: 100%;
+  }
+
+  .postItem .header .thumbnail{
+    height: 40%;
+  }
+
+  .postItem .content .header .title{
+    font-size: 15px;
+  }
+  .postItem .content ul.footer li.button{
+    margin: 0 1px;
+  }
+  .postItem .content .summary{
+    font-size: 11px;
+  }
+}
