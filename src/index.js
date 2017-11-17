@@ -7,6 +7,7 @@ import IndexPage from './components/indexPage';
 import EditorPage from './components/editorPage';
 import SearchPage from './components/searchPage';
 import ViewPage from './components/viewPage';
+import FollowerPage from './components/followerPage';
 import ProfilePage from './components/ProfilePage';
 import ProfileModifyPage from './components/profileModifyPage';
 import store from './store';
@@ -21,7 +22,7 @@ function renderAppInElement(el) {
             <Route exact path = "/editor" component = {EditorPage}/>
             <Route exact path = "/search" component = {SearchPage}/>
             <Route exact path = "/lookup" component = {ViewPage}/>
-            <Route exact path = "/Test" component = {IndexPage}/>
+            <Route exact path = "/follower" component = {FollowerPage}/>
             <Route exact path = "/profile" component = {ProfilePage}/>
             <Route exact path = "/profile/modify" component = {ProfileModifyPage}/>
           </div>

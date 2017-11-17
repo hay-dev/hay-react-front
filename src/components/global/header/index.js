@@ -19,7 +19,7 @@ const defaultProps = {
 
 const defaultHeaderActions = [
   {icon: '/resources/navi/Personal_btn.svg', link: '/profile'},
-  {icon: '/resources/navi/follower_btn.svg', link: '/Test'},
+  {icon: '/resources/navi/follower_btn.svg', link: '/follower'},
   {icon: '/resources/navi/seach_btn.svg', link: '/search'}
 ]
 
