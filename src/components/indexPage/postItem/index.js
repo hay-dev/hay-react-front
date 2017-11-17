@@ -9,6 +9,7 @@ const propTypes = {
   date: React.PropTypes.string.isRequired,
   countOfComment: React.PropTypes.number.isRequired,
   countOfLike: React.PropTypes.number.isRequired,
+  location: React.PropTypes.string.isRequired,
   tags: React.PropTypes.array.isRequired,
   onModify: React.PropTypes.func.isRequired,
   onDelete: React.PropTypes.func.isRequired,
@@ -42,7 +43,7 @@ class PostItem extends React.Component{
           {this.props.summary}
           </div>
           <ul className={styles.footer}>
-            <li>내방에서</li>
+            <li>{this.props.location}</li>
             <li>댓글{this.props.countOfComment}</li>
             <li>혼럽{this.props.countOfLike}</li>
             <li className={styles.button}>삭제</li>

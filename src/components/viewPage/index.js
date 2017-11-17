@@ -11,10 +11,11 @@ import ImageButton from '../global/imageButton';
 import UserInfo from '../global/userInfo';
 import Comments from './comments';
 
-const headerActions = [
-  {icon: '/resources/main/delect_btn_off.svg', hoverIcon:'/resources/main/delect_btn_on.svg', link: 'Test'},
-  {icon: '/resources/main/adjust_btn_off.svg', hoverIcon:'/resources/main/adjust_btn_on.svg', link: 'Test'}
-]
+const ARTICLE_URL = '/articles/';
+
+function getQueryStringValue (key) {
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+}
 
 class ViewPage extends React.Component{
 
@@ -22,6 +23,7 @@ class ViewPage extends React.Component{
     super(props);
 
     this.state={
+      id: '',
       writer: 'writer',
       location: 'location',
       date: 'date',
@@ -31,6 +33,8 @@ class ViewPage extends React.Component{
       name:'앙기무띠',
       comments: []};
     this.onWriteComment = this.onWriteComment.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onModify = this.onModify.bind(this);
   }
 
   onWriteComment(content){
@@ -42,10 +46,25 @@ class ViewPage extends React.Component{
     this.setState({comments:[...this.state.comments, comment]})
   }
 
+  onDelete(){
+    axios.delete(ARTICLE_URL+this.state.id)
+    .then(function(response) {
+      window.location = '/';
+    });
+  }
+
+  onModify(){
+    window.location = '/editor?article=123';
+  }
+
   render(){
-    let renderKetWords = (keywords) => {
-      return keywords.map(function(keyword){
-        return (<div className={styles.keyword}>{keyword}</div>)
+    let headerActions = [
+      {icon: '/resources/main/delect_btn_off.svg', hoverIcon:'/resources/main/delect_btn_on.svg', onClick: this.onDelete},
+      {icon: '/resources/main/adjust_btn_off.svg', hoverIcon:'/resources/main/adjust_btn_on.svg', onClick: this.onModify}
+    ]
+    let renderKeyWords = (keywords) => {
+      return keywords.map(function(keyword, idx){
+        return (<div key={idx} className={styles.keyword}>{keyword}</div>)
       });
     }
     return (
@@ -65,7 +84,7 @@ class ViewPage extends React.Component{
             <div className={styles.keywords}>
               <span className={styles.guide}>Keyword</span>
                <div className={styles.context}>
-                 {renderKetWords(['테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라'])}
+                 {renderKeyWords(['테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라'])}
                </div>
             </div>
             <Comments comments={this.state.comments} onWriteComment={this.onWriteComment} profileImg={this.state.profileImg}/>
@@ -76,6 +95,24 @@ class ViewPage extends React.Component{
         <FloatingBtn style={{'right':'30px', 'bottom':'90px'}} icon={'/resources/writing/reply_btn.svg'} link={'editor'}/>
       </div>
     )
+  }
+
+
+  componentDidMount(){
+    let articleId = getQueryStringValue('article');
+    let _self = this;
+    axios.get(ARTICLE_URL+articleId)
+    .then(function(response) {
+      if(response.data){
+        _self.setState({content:response.data.content,
+                        title:response.data.title,
+                        id:articleId,
+                        location:response.data.location,
+                        weather:response.data.weather,
+                        date:response.data.writeDate,
+                        writer:response.data.author});
+      }
+    });
   }
 }
 

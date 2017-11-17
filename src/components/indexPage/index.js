@@ -11,19 +11,26 @@ import PostItem from './postItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
 
+const ARTICLE_URL = '/articles/';
 
-function createItem(page) {
+function createItem(item) {
   return (<PostItem
-            title={'AI VUX 기획 밉문자를 위한 실전 TIP'}
-            summary={'asdasd'}
-            date={'asdasd'}
+            title={item.title}
+            summary={item.content}
+            date={item.date}
+            location={item.location}
             tags={['ㅁㄴㅇ', 'ㅁㄴㅇㅍ', 'ㅁㅇ']}
             weather={'https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png'}
-            countOfComment={2}
-            countOfLike={8}
-            onModify={function(){}}
-            onDelete={function(){}}
-            onLookup={function(){}}
+            countOfComment={0}
+            countOfLike={item.likeCnt}
+            onModify={function(){window.location='/editor?article='+item.id}}
+            onDelete={function(){
+              axios.delete(ARTICLE_URL+item.id)
+              .then(function(response) {
+                window.location = '/';
+              });
+            }}
+            onLookup={function(){window.location='/lookup?article='+item.id}}
             key={page + 1} />)
 }
 
@@ -34,7 +41,8 @@ class IndexPage extends React.Component{
 
     this.state={
       hasMorePost: true,
-      items: [createItem(0)]
+      items:[],
+      itemList: []
     }
     this.loadPostItem = this.loadPostItem.bind(this);
   }
@@ -42,8 +50,8 @@ class IndexPage extends React.Component{
   loadPostItem(page){
     setTimeout(function() {
       this.setState({
-        items: this.state.items.concat([createItem(page)]),
-        hasMore: (page < 1000)
+        items: this.state.items.concat([createItem(this.state.itemList[page])]),
+        hasMore: (page < this.state.itemList)
       });
     }.bind(this), 100);
   }
@@ -65,6 +73,25 @@ class IndexPage extends React.Component{
         <Footer/>
       </div>
     )
+  }
+
+  componentDidMount(){
+    axios.get(ARTICLE_URL)
+    .then(function(response) {
+      if(response.data){
+        let itemList = response.data.map(function(item){
+          return    {content:item.content,
+                          title:item.title,
+                          id:item.id,
+                          location:item.location,
+                          weather:item.weather,
+                          date:item.writeDate,
+                          writer:item.author}
+        })
+        _self.setState({itemList,
+        items: [createItem(itemList[0])]});
+      }
+    });
   }
 
 }
