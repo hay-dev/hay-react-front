@@ -8,6 +8,7 @@ import EditorPage from './components/editorPage';
 import SearchPage from './components/searchPage';
 import ViewPage from './components/viewPage';
 import ProfilePage from './components/ProfilePage';
+import ProfileModifyPage from './components/profileModifyPage';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -22,6 +23,7 @@ function renderAppInElement(el) {
             <Route exact path = "/lookup" component = {ViewPage}/>
             <Route exact path = "/Test" component = {IndexPage}/>
             <Route exact path = "/profile" component = {ProfilePage}/>
+            <Route exact path = "/profile/modify" component = {ProfileModifyPage}/>
           </div>
         </Router>
       </Provider>, el);

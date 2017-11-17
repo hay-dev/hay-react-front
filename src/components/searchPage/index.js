@@ -40,6 +40,7 @@ class SearchPage extends React.Component{
       items: [createItem(0)]
     }
     this.loadPostItem = this.loadPostItem.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   loadPostItem(page){
@@ -49,6 +50,14 @@ class SearchPage extends React.Component{
         hasMore: (page < itemList.length)
       });
     }.bind(this), 100);
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      //---------------------------------------------------검색
+      console.log(e.target.value);
+      e.preventDefault();
+    }
   }
 
   render(){
@@ -62,7 +71,7 @@ class SearchPage extends React.Component{
         <Header/>
         <div className={styles.contents}>
            <div className={styles.search_content}>
-           <textarea className={styles.searchBar}>가나다라</textarea>
+           <textarea className={styles.searchBar} onKeyPress={this.handleKeyPress}>가나다라</textarea>
            <div className={styles.keywords}>
             <div className={styles.context}>
               {renderKetWords(['테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라','테스트', '키워드', '가나다라'])}

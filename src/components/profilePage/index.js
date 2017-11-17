@@ -71,7 +71,7 @@ class ProfilePage extends React.Component{
                 </div>
                 <div className={styles.bottom}>{'소설가이지만 글 못쓰는 소설가 입니다. 글스기를 망성이게하는 착각을 푸는 글을 써보려고 합니다.'}</div>
               </div>
-              <Link className={styles.settingBtn} to={''}>
+              <Link className={styles.settingBtn} to={'/profile/modify'}>
                 <img src={'/resources/profile_setting.png'}/>
               </Link>
             </div>
