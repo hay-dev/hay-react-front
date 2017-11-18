@@ -37,7 +37,7 @@ class UserInfo extends React.Component{
         <div className={styles.subInfo}>
           <div>
             <span className={styles.name}>{this.props.writer}</span>
-            <ImageButton className={styles.fallowBtn} defaultIcon={'/resources/writing/following_btn_off.svg'} hoverIcon={'/resources/writing/following_btn_on.svg'}/>
+            <ImageButton className={styles.fallowBtn} defaultIcon={'/resources/writing/following_btn_off.png'} hoverIcon={'/resources/writing/following_btn_on.png'}/>
           </div>
           <div>
             <span className={styles.location}>{this.props.location}</span>

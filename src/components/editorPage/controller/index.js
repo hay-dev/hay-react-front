@@ -26,6 +26,7 @@ class Controller extends React.Component{
       modal: ''
     }
     this.imageLoad = this.imageLoad.bind(this);
+    this.onActionInModal = this.onActionInModal.bind(this);
   }
 
   toggleDialog(e, modal){
@@ -54,18 +55,22 @@ class Controller extends React.Component{
         fr.readAsDataURL(inputElement.files[0]);
       });
       inputElement.dispatchEvent(new MouseEvent("click"));
+  }
 
+  onActionInModal(func, object){
+    this.setState({modal: undefined});
+    func(object);
   }
 
   render(){
     let getModal = (modal) => {
       switch (modal){
         case Weather:
-          return <WeatherController onWeatherSelected={this.props.onWeatherSelected}/>
+          return <WeatherController onWeatherSelected={(e)=>this.onActionInModal(this.props.onWeatherSelected, e)}/>
         case Location:
-          return <LocationController onAddressSelected={this.props.onAddressSelected}/>
+          return <LocationController onAddressSelected={(e)=>this.onActionInModal(this.props.onAddressSelected,e)}/>
         case Line:
-          return <LineController onLineSelected={this.props.onLineSelected}/>
+          return <LineController onLineSelected={(e)=>this.onActionInModal(this.props.onLineSelected,e)}/>
         case Image:
           this.imageLoad();
           return;

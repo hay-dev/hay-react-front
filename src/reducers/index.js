@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import IndexPageReducer from './IndexPage/IndexPageReducer';
+import post from './post';
+import account from './account';
 
 const reducers = combineReducers({
-  IndexPageReducer
+  post, account
 });
 
 export default reducers;

@@ -1,3 +1,6 @@
+body{
+    padding-bottom: 72px;
+}
 .contents{
   display: flex;
   align-items: center;

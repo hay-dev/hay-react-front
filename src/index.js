@@ -8,7 +8,7 @@ import EditorPage from './components/editorPage';
 import SearchPage from './components/searchPage';
 import ViewPage from './components/viewPage';
 import FollowerPage from './components/followerPage';
-import ProfilePage from './components/ProfilePage';
+import ProfilePage from './components/profilePage';
 import ProfileModifyPage from './components/profileModifyPage';
 import store from './store';
 import { Provider } from 'react-redux';

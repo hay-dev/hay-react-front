@@ -24,7 +24,6 @@ class LocationController extends React.Component{
     axios.get(apiUrl+this.state.searchText)
       .then(function (response) {
         if(response.data.results.common.errorMessage=='정상'){
-          console.log(response.data.results.juso);
           let addressList = response.data.results.juso.map(function(addr){
             return {name:addr.bdNm, detail:addr.jibunAddr};
           });
@@ -40,13 +39,13 @@ class LocationController extends React.Component{
       let _self = this;
       if(addressList&&addressList.length>0){
         return addressList.map(function(addr, idx){
-          return (<div key={addr+idx} onClick={()=>_self.props.onAddressSelected(addr)} className={styles.addr}>
+          return (<div key={addr+idx} onClick={()=>_self.props.onAddressSelected(addr.detail)} className={styles.addr}>
             {addr.name}
             <h6>{addr.detail}</h6>
           </div>)
         });
       }else{
-        return (<img className={styles.thumbnail} src={'/resources/writing_view/location_icon.png'}/>)
+        return (<img className={styles.thumbnail} src={'/resources/writing_view/location_icon.PNG'}/>)
       }
     }
     return (

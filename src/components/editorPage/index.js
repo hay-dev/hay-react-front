@@ -8,9 +8,13 @@ import Controller from './controller';
 import Header from '../global/header';
 import Footer from '../global/footer';
 
-const headerActions = [
-  {icon: '/resources/writing_view/save_btn_off.svg', hoverIcon:'/resources/writing_view/save_btn_on.svg', link: 'Test'}
-]
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as postActions from '../../actions/post';
+
+
+const ARTICLE_URL = '';
 
 const CKEditorConfig = { toolbarGroups : [
   { name: 'styles', groups: [ 'styles' ] },
@@ -34,7 +38,8 @@ const CKEditorConfig = { toolbarGroups : [
   };
 
 
-function uploadPost(title, content, tags){
+function getQueryStringValue (key) {
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 }
 
 class EditorPage extends React.Component{
@@ -43,24 +48,73 @@ class EditorPage extends React.Component{
     super(props);
 
     this.state = {
-      title: '제목을 적어주세요',
+      title: '',
       content: '당신의 하루를 적어주세요.',
-      address: '',
-      weather: ''
+      location: '',
+      weather: '',
+      date: 'Nov.18.2017',
+      tags: ''
     }
+
     this.onAddressSelected = this.onAddressSelected.bind(this);
     this.onLineSelected = this.onLineSelected.bind(this);
     this.onImageSelected = this.onImageSelected.bind(this);
     this.onWeatherSelected = this.onWeatherSelected.bind(this);
+    this.uploadPost = this.uploadPost.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  render(){
+    let headerActions = [
+      {icon: '/resources/writing_view/save_btn_off.svg', hoverIcon:'/resources/writing_view/save_btn_on.svg', link: '/', onClick: this.uploadPost}
+    ]
+    return (
+      <div>
+        <Header actions={headerActions}/>
+        <div className={styles.contents}>
+          <div className={styles.editor}>
+            <div className={styles.date}>{this.state.date}</div>
+            <textarea className={styles.title} value={this.state.title} placeholder={'제목을 적어주세요'} onChange={(e)=>{this.setState({title:e.target.value})}}></textarea>
+            <CKEditor
+              activeClass="p10"
+              config={CKEditorConfig}
+              content={this.state.content}
+              events={{"change": this.onChange}}
+             />
+             <Controller
+               onAddressSelected= {this.onAddressSelected}
+               onLineSelected= {this.onLineSelected}
+               onImageSelected= {this.onImageSelected}
+               onWeatherSelected = {this.onWeatherSelected}
+             />
+             <textarea className={styles.tags} value={this.state.tags} onChange={(e)=>this.setState({tags:e.target.value})} placeholder={'#태그를_입력해_주세요'}></textarea>
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    )
+  }
+
+  componentDidMount(){
+    if(this.props.post){
+      this.setState(this.props.post);
+    }
+  }
+
+  uploadPost(){
+    if(getQueryStringValue('article')){
+      this.props.updatePost(getQueryStringValue('article'), this.state);
+    }else{
+      this.props.uploadPost(this.state);
+    }
   }
 
   onWeatherSelected(weather){
     this.setState({weather});
   }
 
-  onAddressSelected(address){
-    this.setState({address});
+  onAddressSelected(location){
+    this.setState({location});
   }
 
   onLineSelected(lineStyle){
@@ -88,33 +142,16 @@ class EditorPage extends React.Component{
       })
     }
 
-  render(){
-    return (
-      <div>
-        <Header actions={headerActions}/>
-        <div className={styles.contents}>
-          <div className={styles.editor}>
-            <div className={styles.date}>{'Nov.11.2017'}</div>
-            <textarea className={styles.title} value={this.state.title} onChange={(e)=>{this.setState(title:e.target.value)}}></textarea>
-            <CKEditor
-              activeClass="p10"
-              config={CKEditorConfig}
-              content={this.state.content}
-              events={{"change": this.onChange}}
-             />
-             <Controller
-               onAddressSelected= {this.onAddressSelected}
-               onLineSelected= {this.onLineSelected}
-               onImageSelected= {this.onImageSelected}
-               onWeatherSelected = {this.onWeatherSelected}
-             />
-             <textarea className={styles.tags} placeholder={'#태그를_입력해_주세요'}></textarea>
-          </div>
-        </div>
-        <Footer/>
-      </div>
-    )
-  }
-
 }
-export default EditorPage;
+
+
+const mapStateToProps = (state) => {
+  let articleId = getQueryStringValue('article');
+  return (articleId)? {post:state.post.list[articleId]}: {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ ...postActions }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditorPage);

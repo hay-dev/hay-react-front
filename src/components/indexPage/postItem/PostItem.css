@@ -1,3 +1,6 @@
+a{
+  text-decoration: none !important;
+}
 .postItem{
   position: relative;
   width: 620px;

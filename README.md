@@ -1,1 +1,1 @@
-# HAY Front project
+# CC Show

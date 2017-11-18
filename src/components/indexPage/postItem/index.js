@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './PostItem.css';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   summary: React.PropTypes.string.isRequired,
@@ -9,10 +10,11 @@ const propTypes = {
   date: React.PropTypes.string.isRequired,
   countOfComment: React.PropTypes.number.isRequired,
   countOfLike: React.PropTypes.number.isRequired,
+  location: React.PropTypes.string.isRequired,
   tags: React.PropTypes.array.isRequired,
-  onModify: React.PropTypes.func.isRequired,
+  onModify: React.PropTypes.string.isRequired,
   onDelete: React.PropTypes.func.isRequired,
-  onLookup: React.PropTypes.func.isRequired
+  onLookup: React.PropTypes.string.isRequired
 }
 
 function getTags(tags){
@@ -27,6 +29,7 @@ class PostItem extends React.Component{
 
   render(){
     return (
+      <Link to={this.props.onLookup}>
       <div className={styles.postItem}>
         <div className={styles.header}>
           <img className={styles.thumbnail} src={"https://assets.punchdrink.com/wp-content/uploads/2016/03/Article-Second-Cheapest-Wine-By-the-Glass-Restaurant-Dining-NYC-Gramercy-Tavern-Juliette-Pope-David-Lynch-Jose-Andres.jpg"}/>
@@ -42,7 +45,7 @@ class PostItem extends React.Component{
           {this.props.summary}
           </div>
           <ul className={styles.footer}>
-            <li>내방에서</li>
+            <li>{this.props.location}</li>
             <li>댓글{this.props.countOfComment}</li>
             <li>혼럽{this.props.countOfLike}</li>
             <li className={styles.button}>삭제</li>
@@ -50,9 +53,9 @@ class PostItem extends React.Component{
           </ul>
         </div>
       </div>
+      </Link>
     )
   }
-
 }
 
 PostItem.propTypes = propTypes;

@@ -11,21 +11,9 @@ import PostItem from './postItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
 
+import { connect } from 'react-redux';
 
-function createItem(page) {
-  return (<PostItem
-            title={'AI VUX 기획 밉문자를 위한 실전 TIP'}
-            summary={'asdasd'}
-            date={'asdasd'}
-            tags={['ㅁㄴㅇ', 'ㅁㄴㅇㅍ', 'ㅁㅇ']}
-            weather={'https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png'}
-            countOfComment={2}
-            countOfLike={8}
-            onModify={function(){}}
-            onDelete={function(){}}
-            onLookup={function(){}}
-            key={page + 1} />)
-}
+const ARTICLE_URL = '/articles/';
 
 class IndexPage extends React.Component{
 
@@ -34,18 +22,44 @@ class IndexPage extends React.Component{
 
     this.state={
       hasMorePost: true,
-      items: [createItem(0)]
+      items:[],
+      itemList: []
     }
     this.loadPostItem = this.loadPostItem.bind(this);
+    this.createItem = this.createItem.bind(this);
   }
 
   loadPostItem(page){
+    if(page> this.props.posts.length)return;
     setTimeout(function() {
       this.setState({
-        items: this.state.items.concat([createItem(page)]),
-        hasMore: (page < 1000)
+        items: this.state.items.concat([this.createItem(page)]),
+        hasMore: (page < this.props.posts.length)
       });
     }.bind(this), 100);
+  }
+
+  createItem(page) {
+    let postNum = this.props.posts.length-page
+    let item = this.props.posts[postNum];
+    return (<PostItem
+              title={item.title}
+              summary={item.summary}
+              date={item.date}
+              location={item.location}
+              tags={['ㅁㄴㅇ', 'ㅁㄴㅇㅍ', 'ㅁㅇ']}
+              weather={'https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png'}
+              countOfComment={0}
+              countOfLike={0}
+              onModify={'/editor?article='+(postNum)}
+              onDelete={function(){
+                axios.delete(ARTICLE_URL+item.id)
+                .then(function(response) {
+                  window.location = '/';
+                });
+              }}
+              onLookup={'/lookup?article='+(postNum)}
+              key={page} />)
   }
 
   render(){
@@ -57,7 +71,7 @@ class IndexPage extends React.Component{
             pageStart={0}
             loadMore={this.loadPostItem}
             hasMore={this.state.hasMorePost}
-            loader={<div className="loader">Loading ...</div>}>
+            loader={<div className="loader"></div>}>
             {this.state.items}
           </InfiniteScroll>
         </div>
@@ -68,4 +82,9 @@ class IndexPage extends React.Component{
   }
 
 }
-export default IndexPage;
+
+const mapStateToProps = (state) => {
+  return {posts: state.post.list};
+}
+
+export default connect(mapStateToProps)(IndexPage);

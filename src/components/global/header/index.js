@@ -7,7 +7,8 @@ import ImageButton from '../imageButton';
 
 const propTypes = {
   actions: React.PropTypes.arrayOf(React.PropTypes.shape({
-     link: React.PropTypes.string.isRequired,
+     link: React.PropTypes.string,
+     onClick: React.PropTypes.func,
      icon: React.PropTypes.string.isRequired,
      hoverIcon: React.PropTypes.string
    }))
@@ -36,11 +37,17 @@ class Header extends React.Component{
     let renderActionItems = (actions) =>{
       if(actions)
       return actions.map(function(actionItem, index){
-        return (<li key={index}>
+        if(actionItem.link){
+        return (<li key={index} onClick={actionItem.onClick}>
                   <Link to={actionItem.link}>
                     <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/>
                   </Link>
                 </li>)
+        }else{
+          return (<li key={index}>
+                    <ImageButton onClick={actionItem.onClick} defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/>
+                </li>)
+        }
       });
     }
     return (
