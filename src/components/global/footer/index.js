@@ -25,7 +25,7 @@ class Header extends React.Component{
     return (
       <div className={styles.footer}>
         <div className={styles.context}>
-          <h4 className={styles.copyright}>{'Copyright (c) depmeet Corp.'}</h4>
+          <h4 className={styles.copyright}>{'Copyright (c) depromeet Corp.'}</h4>
           <ul className={styles.sns}>
             <li><img src={'/resources/footer/blog.svg'}/></li>
             <li><img src={'/resources/footer/faceboook.svg'}/></li>

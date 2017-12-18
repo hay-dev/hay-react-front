@@ -29,7 +29,7 @@ class LineController extends React.Component{
     let renderWeathers = (weathers) =>{
       let _self = this;
       return weathers.map(function(weather, idx){
-        return (<img key={idx} src={weather.src} onClick={()=>_self.props.onWeatherSelected(weather.src)} />)
+        return (<img key={idx} src={weather.src} onClick={()=>_self.props.onWeatherSelected(idx + 1)} />)
       })
     }
     return (

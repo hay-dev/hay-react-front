@@ -11,7 +11,7 @@ const Location = 'location-modal';
 const Line = 'line-modal';
 
 const propTypes = {
-  onAddressSelected: React.PropTypes.func.isRequired,
+  onLocationSelected: React.PropTypes.func.isRequired,
   onLineSelected: React.PropTypes.func.isRequired,
   onImageSelected: React.PropTypes.func.isRequired,
   onWeatherSelected: React.PropTypes.func.isRequired
@@ -63,7 +63,7 @@ class Controller extends React.Component{
         case Weather:
           return <WeatherController onWeatherSelected={this.props.onWeatherSelected}/>
         case Location:
-          return <LocationController onAddressSelected={this.props.onAddressSelected}/>
+          return <LocationController onLocationSelected={this.props.onLocationSelected}/>
         case Line:
           return <LineController onLineSelected={this.props.onLineSelected}/>
         case Image:

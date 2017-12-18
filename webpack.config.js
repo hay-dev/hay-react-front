@@ -18,6 +18,8 @@ module.exports = {
         contentBase: __dirname + '/public/' //index 파일의 위치
     },
 
+    devtool: '#inline-source-map',
+
     module: {
         loaders: [ //loader를 통해 es6, react js 형식을 일반 js형식으로 변환해줌
             {
