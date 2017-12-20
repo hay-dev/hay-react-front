@@ -28,10 +28,10 @@ class LineController extends React.Component{
   render(){
     let renderWeathers = (weathers) =>{
       let _self = this;
-      return weathers.map(function(weather, idx){
+      return weathers.map(function(weather, idx) {
         return (<img key={idx} src={weather.src} onClick={()=>_self.props.onWeatherSelected(idx + 1)} />)
-      })
-    }
+      });
+    };
     return (
       <div className={styles.weatherController}>
         {renderWeathers(kindOfWeather)}

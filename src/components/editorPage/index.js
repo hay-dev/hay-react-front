@@ -70,8 +70,10 @@ class EditorPage extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
-                if (response.status !== 201) {
+                console.log(this);
+                if (response.status === 201) {
+                   this.props.history.push('/');
+                } else {
                     alert('글을 업로드하지 못했습니다. 잠시 후 다시 시도해주세요.');
                 }
             })
@@ -108,10 +110,10 @@ class EditorPage extends React.Component {
     }
 
     onChange(evt) {
-        var newContent = evt.editor.getData();
+        let newContent = evt.editor.getData();
         this.setState({
             content: newContent
-        })
+        });
     }
 
     render() {
@@ -120,7 +122,7 @@ class EditorPage extends React.Component {
                 <Header actions={headerActions}/>
                 <div className={styles.contents}>
                     <div className={styles.editor}>
-                        <div className={styles.date}>{'Nov.11.2017'}</div>
+                        <div className={styles.date}>{'Dec.19.2017'}</div>
                         <textarea className={styles.title} value={this.state.title} onChange={(e) => {
                             this.setState({title: e.target.value});
                         }}></textarea>

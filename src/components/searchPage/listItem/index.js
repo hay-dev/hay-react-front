@@ -8,7 +8,7 @@ const propTypes = {
   content: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
-  location: React.PropTypes.string.isRequired,
+  location: React.PropTypes.string,
   writer: React.PropTypes.string.isRequired,
   profileImg: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func
