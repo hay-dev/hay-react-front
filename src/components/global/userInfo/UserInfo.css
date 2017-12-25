@@ -1,60 +1,60 @@
-.userInfo, .userInfo .subInfo > *{
-  display: flex;
-  align-items: center;
-  justify-content: left;
+.userInfo, .userInfo .subInfo > * {
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
-.userInfo .profileImg{
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  width: 64px;
-  height: 64px;
-  margin-right: 10px;
+.userInfo .profileImg {
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
 }
 
-.userInfo .profileImg > img{
-  position: absolute;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.userInfo .profileImg > img {
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.userInfo .subInfo{
-  width: 100%;
-  position: relative;
-  display: inline-block;
+.userInfo .subInfo {
+    width: 100%;
+    position: relative;
+    display: inline-block;
 }
 
-.userInfo .name{
-  font-size: 24px;
-  color: #333333;
+.userInfo .name {
+    font-size: 24px;
+    color: #333333;
 }
 
-.userInfo .fallowBtn{
-  width: 65px;
-  margin-left: 5px;
-  cursor: pointer;
+.userInfo .fallowBtn {
+    width: 65px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-.userInfo .location{
-  font-size: 12px;
-  color: #909090;
-  margin-right: 10px;
+.userInfo .location {
+    font-size: 12px;
+    color: #909090;
+    margin-right: 10px;
 }
 
-.userInfo .date{
-  font-size: 12px;
-  color: #909090;
+.userInfo .date {
+    font-size: 12px;
+    color: #909090;
 }
 
-.userInfo .likeBtn{
-  position: absolute;
-  cursor: pointer;
-  height: 41px;
-  right:0;
-  top: 50%;
-  transform: translateY(-50%);
+.userInfo .likeBtn {
+    position: absolute;
+    cursor: pointer;
+    height: 41px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }

@@ -21,7 +21,7 @@ function renderAppInElement(el) {
             <Route exact path = "/" component = {IndexPage}/>
             <Route exact path = "/editor" component = {EditorPage}/>
             <Route exact path = "/search" component = {SearchPage}/>
-            <Route exact path = "/lookup" component = {ViewPage}/>
+            <Route exact path = "/lookup/:id" component = {ViewPage}/>
             <Route exact path = "/follower" component = {FollowerPage}/>
             <Route exact path = "/profile" component = {ProfilePage}/>
             <Route exact path = "/profile/modify" component = {ProfileModifyPage}/>

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import {IntlProvider, FormattedDate} from 'react-intl'
+
 import CKEditor from "react-ckeditor-component";
 import styles from './editorPage.css';
 import Controller from './controller';
@@ -37,7 +39,6 @@ const CKEditorConfig = {
     removePlugins: 'elementspath'
 };
 
-
 class EditorPage extends React.Component {
 
     constructor(props) {
@@ -72,7 +73,7 @@ class EditorPage extends React.Component {
             .then(response => {
                 console.log(this);
                 if (response.status === 201) {
-                   this.props.history.push('/');
+                    this.props.history.push('/');
                 } else {
                     alert('글을 업로드하지 못했습니다. 잠시 후 다시 시도해주세요.');
                 }
@@ -122,23 +123,28 @@ class EditorPage extends React.Component {
                 <Header actions={headerActions}/>
                 <div className={styles.contents}>
                     <div className={styles.editor}>
-                        <div className={styles.date}>{'Dec.19.2017'}</div>
-                        <textarea className={styles.title} value={this.state.title} onChange={(e) => {
-                            this.setState({title: e.target.value});
-                        }}></textarea>
-                        <CKEditor
-                            activeClass="p10"
-                            config={CKEditorConfig}
-                            content={this.state.content}
-                            events={{"change": this.onChange}}
-                        />
-                        <Controller
-                            onLineSelected={this.onLineSelected}
-                            onImageSelected={this.onImageSelected}
-                            onWeatherSelected={this.onWeatherSelected}
-                            onLocationSelected={this.onLocationSelected}
-                        />
-                        <textarea className={styles.tags} placeholder={'#태그를_입력해_주세요'}></textarea>
+                        <div className={styles.date}>
+                            <IntlProvider locale="en">
+                                <FormattedDate value={new Date()}
+                                               year="numeric"
+                                               month="short"
+                                               day="2-digit"/>
+                            </IntlProvider>
+                        </div>
+                        <textarea className={styles.title}
+                                  placeholder={'제목을 적어주세요.'}
+                                  onChange={(e) => {
+                                      this.setState({title: e.target.value});
+                                  }}/>
+                        <CKEditor activeClass="p10"
+                                  config={CKEditorConfig}
+                                  events={{'change': this.onChange}}/>
+                        <Controller onLineSelected={this.onLineSelected}
+                                    onImageSelected={this.onImageSelected}
+                                    onWeatherSelected={this.onWeatherSelected}
+                                    onLocationSelected={this.onLocationSelected}/>
+                        <textarea className={styles.tags}
+                                  placeholder={'#태그를_입력해_주세요'}/>
                     </div>
                 </div>
                 <Footer/>

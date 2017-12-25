@@ -7,9 +7,9 @@ import axios from 'axios';
 import Header from '../global/header';
 import Footer from '../global/footer';
 import FloatingBtn from '../global/floatingButton';
-import PostItem from './postItem';
 
 import InfiniteScroll from 'react-infinite-scroller';
+import Article from "./article/index";
 
 class IndexPage extends React.Component {
 
@@ -18,14 +18,15 @@ class IndexPage extends React.Component {
 
         this.state = {
             hasMorePost: true,
-            items: []
+            articles: []
         };
+        this.loadMore = this.loadMore.bind(this);
         this.loadRecentPostItem = this.loadRecentPostItem.bind(this);
         this.loadPostItem = this.loadPostItem.bind(this);
     }
 
     loadMore() {
-        if (this.state.items.length === 0) {
+        if (this.state.articles.length === 0) {
             this.loadRecentPostItem();
         } else {
             this.loadPostItem();
@@ -35,67 +36,80 @@ class IndexPage extends React.Component {
     loadRecentPostItem() {
         axios.get('http://localhost:8080/articles/recent')
             .then(response => {
+                console.log("loading recent post item successful.");
+                console.log(response);
                 this.setState({
-                    items: this.state.items.concat([response.data])
-                }, () => {
-                    if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
-                        this.state.hasMorePost = false;
-                    }
+                    articles: this.state.articles.concat([response.data])
                 });
+                if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
+                    this.state.hasMorePost = false;
+                }
             })
             .catch(response => {
+                console.log("loading recent post item failed.");
                 console.log(response);
             });
     }
 
     loadPostItem() {
-        axios.get('http://localhost:8080/articles/' + (this.state.items[this.state.items.length - 1].id - 1))
+        axios.get('http://localhost:8080/articles/' + (this.state.articles[this.state.articles.length - 1].id - 1))
             .then(response => {
+                console.log("Loading post item successful.");
+                console.log(response);
                 this.setState({
-                    items: this.state.items.concat([response.data])
+                    articles: this.state.articles.concat([response.data])
                 });
-                if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
+                if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
                     this.state.hasMorePost = false;
                 }
             })
             .catch(response => {
+                console.log("Loading post item failed.");
                 console.log(response);
             });
     }
 
     render() {
+        let renderArticles = () => {
+            return this.state.articles.map(article => {
+                return (
+                    <Article key={article.id}
+                                 id={article.id}
+                                 title={article.title}
+                                 summary={article.content}
+                                 writeDate={article.writeDate}
+                                 weather={article.weather}
+                                 location={article.location}
+                                 commentCnt={article.comments.length}
+                                 likeCnt={article.likers.length}
+                                 tags={["hashtag"]}
+                                 onModify={() => {
+                                 }}
+                                 onDelete={() => {
+                                 }}/>
+                )
+            });
+        };
+
         return (
             <div>
                 <Header/>
                 <div className={styles.contents}>
                     <InfiniteScroll
                         pageStart={0}
-                        loadMore={this.loadMore.bind(this)}
+                        loadMore={this.loadMore}
                         hasMore={this.state.hasMorePost}
                         loader={<div className="loader">Loading ...</div>}>
-                        {this.state.items.map(article => {
-                            console.log(article);
-                            return <PostItem key={article.id}
-                                             title={article.title}
-                                             summary={article.content}
-                                             date={article.writeDate}
-                                             weather={article.weather}
-                                             countOfComment={0}
-                                             countOfLike={article.likeCnt}
-                                             tags={["hashtag"]}
-                                             onLookup={() => {}}
-                                             onModify={() => {}}
-                                             onDelete={() => {}} />
-                        })}
+                        {renderArticles()}
                     </InfiniteScroll>
                 </div>
-                <FloatingBtn style={{'right': '30px', 'bottom': '90px'}} icon={'/resources/main/Writing_btn.svg'}
+                <FloatingBtn style={{'right': '30px', 'bottom': '90px'}}
+                             icon={'/resources/main/Writing_btn.svg'}
                              link={'editor'}/>
                 <Footer/>
             </div>
         )
     }
-
 }
 
 export default IndexPage;

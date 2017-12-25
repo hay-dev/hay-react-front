@@ -13,7 +13,7 @@
   font-weight: bold;
 }
 
-.comment .profileImg{
+.comment .profileImage{
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
@@ -23,7 +23,7 @@
   margin-right: 10px;
 }
 
-.comment .profileImg > img{
+.comment .profileImage > img {
   background: white;
   position: absolute;
   height: 100%;

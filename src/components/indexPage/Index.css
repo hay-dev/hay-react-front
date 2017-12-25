@@ -1,6 +1,6 @@
-body{
-  margin: 0;
-  padding: 0;
+body {
+    margin: 0;
+    padding: 0;
 }
 
 /*body::-webkit-scrollbar-track
@@ -21,14 +21,14 @@ body::-webkit-scrollbar-thumb
 	border: 2px solid #555555;
 }*/
 
-.contents{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 70px;
-  width: 100%;
+.contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+    width: 100%;
 }
 
-.footer{
-  height: 102px;
+.footer {
+    height: 102px;
 }

@@ -1,30 +1,53 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import styles from './FloatingButton.css';
-import { Link } from 'react-router-dom';
+import ImageButton from "../imageButton/index";
 
 const propTypes = {
-  style: React.PropTypes.object.isRequired,
-  link: React.PropTypes.string.isRequired,
-  icon: React.PropTypes.string.isRequired
-}
+    icon: React.PropTypes.string.isRequired,
+    hoverIcon: React.PropTypes.string,
+    style: React.PropTypes.object,
+    className: React.PropTypes.string,
+    link: React.PropTypes.string,
+    onClick: React.PropTypes.func
+};
 
-class Header extends React.Component{
+const defaultProps = {
+    style: '',
+    className: '',
+    link: '',
+    onClick: () => {}
+};
 
-  constructor(props){
-    super(props);
-  }
+class Header extends React.Component {
 
-  render(){
-    return (
-      <div style={this.props.style} className={styles.floatingBtn}>
-        <Link to={this.props.link}><img src={this.props.icon}/></Link>
-      </div>
-    )
-  }
+    constructor(props) {
+        super(props);
+    }
+
+    createLinkButton(actionItem) {
+        return <Link to={actionItem.link}>
+            <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/>
+        </Link>
+    }
+
+    createClickButton(actionItem) {
+        return <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}
+                            onClick={actionItem.onClick}/>
+    }
+
+    render() {
+        return (
+            <div style={this.props.style} className={styles.floatingBtn}>
+                <Link to={this.props.link}><img src={this.props.icon}/></Link>
+            </div>
+        )
+    }
 
 }
 
 Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;

@@ -1,41 +1,47 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 const propTypes = {
-  className: React.PropTypes.string,
-  onClick: React.PropTypes.func,
-  defaultIcon: React.PropTypes.string.isRequired,
-  hoverIcon: React.PropTypes.string
-}
+    icon: React.PropTypes.string.isRequired,
+    hoverIcon: React.PropTypes.string,
+    style: React.PropTypes.object,
+    className: React.PropTypes.string,
+    link: React.PropTypes.string,
+    onClick: React.PropTypes.func
+};
 
 const defaultProps = {
-  className: ''
-}
+    style: {},
+    className: '',
+    link: '',
+    onClick: () => {}
+};
 
-class ImageButton extends React.Component{
-  constructor(props) {
-      super(props);
-      this.mouseOver = this.mouseOver.bind(this);
-      this.mouseOut = this.mouseOut.bind(this);
-      this.state = {
-          icon: props.defaultIcon
-      };
-  }
+class ImageButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.mouseOver = this.mouseOver.bind(this);
+        this.mouseLeave = this.mouseLeave.bind(this);
+    }
 
-  mouseOver() {
-    if(this.props.hoverIcon)
-      this.setState({icon: this.props.hoverIcon});
-  }
+    mouseOver() {
+        if (this.props.hoverIcon) {
+            this.setState({icon: this.props.hoverIcon});
+        }
+    }
 
-  mouseOut() {
-      this.setState({icon: this.props.defaultIcon});
-  }
+    mouseLeave() {
+        this.setState({icon: this.props.icon});
+    }
 
-  render(){
-    return (<img onClick={this.props.onClick} onMouseLeave={this.mouseOut} className={this.props.className} onMouseOver={this.mouseOver} src={this.state.icon}/>)
-  }
-
+    render() {
+        return (
+            <img src={this.props.icon}
+                     onMouseOver={this.mouseOver}
+                     onMouseLeave={this.mouseLeave}
+                     onClick={this.props.onClick}
+                     className={this.props.className}/>
+        );
+    }
 }
 
 ImageButton.propTypes = propTypes;
