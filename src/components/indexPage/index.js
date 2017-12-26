@@ -1,4 +1,5 @@
 import React from 'react';
+import { List } from 'immutable';
 
 import styles from './Index.css';
 
@@ -18,7 +19,7 @@ class IndexPage extends React.Component {
 
         this.state = {
             hasMorePost: true,
-            articles: []
+            articles: List()
         };
         this.loadMore = this.loadMore.bind(this);
         this.loadRecentPostItem = this.loadRecentPostItem.bind(this);
@@ -39,7 +40,7 @@ class IndexPage extends React.Component {
                 console.log("loading recent post item successful.");
                 console.log(response);
                 this.setState({
-                    articles: this.state.articles.concat([response.data])
+                    articles: this.state.articles.push(response.data)
                 });
                 if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
                     this.state.hasMorePost = false;
@@ -57,7 +58,7 @@ class IndexPage extends React.Component {
                 console.log("Loading post item successful.");
                 console.log(response);
                 this.setState({
-                    articles: this.state.articles.concat([response.data])
+                    articles: this.state.articles.push(response.data)
                 });
                 if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
                     this.state.hasMorePost = false;

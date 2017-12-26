@@ -15,7 +15,7 @@ let headerActions = [
         icon: '/resources/writing_view/save_btn_off.svg',
         hoverIcon: '/resources/writing_view/save_btn_on.svg'
     }
-]
+];
 
 const CKEditorConfig = {
     toolbarGroups: [
@@ -71,7 +71,7 @@ class EditorPage extends React.Component {
             }
         })
             .then(response => {
-                console.log(this);
+                console.log(response);
                 if (response.status === 201) {
                     this.props.history.push('/');
                 } else {

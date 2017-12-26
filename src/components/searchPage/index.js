@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { List } from 'immutable';
 
 import styles from './Index.css';
 
@@ -14,19 +15,42 @@ function removeHtmlTags(text) {
     return text.replace(regex, '');
 }
 
+const propTypes = {
+    memberId: React.PropTypes.number.isRequired
+};
+
 class SearchPage extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            member: {},
             hasMorePost: false,
-            items: []
+            items: List()
         };
+        this.loadMember = this.loadMember.bind(this);
         this.search = this.search.bind(this);
         this.loadRecentPostItem = this.loadRecentPostItem.bind(this);
         this.loadPostItem = this.loadPostItem.bind(this);
         this.renderArticles = this.renderArticles.bind(this);
+
+        this.loadMember();
+    }
+
+    loadMember() {
+        axios.get('http://localhost:8080/members/' + this.props.id)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    member: response.data
+                });
+            })
+            .catch(response => {
+                console.log(response);
+                alert('오류로 인해 내 정보를 불러오지 못했습니다.');
+            });
+
     }
 
     loadMore() {
@@ -43,12 +67,11 @@ class SearchPage extends React.Component {
         axios.get('http://localhost:8080/articles/search/recent?query=' + document.getElementById('keyword').value)
             .then(response => {
                 this.setState({
-                    items: this.state.items.concat(response.data)
-                }, () => {
-                    if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
-                        this.state.hasMorePost = false;
-                    }
+                    items: this.state.items.push(response.data)
                 });
+                if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
+                    this.state.hasMorePost = false;
+                }
             })
             .catch(response => {
                 console.log(response);
@@ -60,12 +83,11 @@ class SearchPage extends React.Component {
             '&last_id=' + (this.state.items[this.state.items.length - 1].id))
             .then(response => {
                 this.setState({
-                    items: this.state.items.concat(response.data)
-                }, () => {
-                    if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
-                        this.state.hasMorePost = false;
-                    }
+                    items: this.state.items.push(response.data)
                 });
+                if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
+                    this.state.hasMorePost = false;
+                }
             })
             .catch(response => {
                 console.log(response);
@@ -86,19 +108,18 @@ class SearchPage extends React.Component {
         }
     }
 
-    follow() {
-        axios.post('http://localhost:8080/members/14/follows/' + this.state.author.id)
+    follow(memberId) {
+        axios.post('http://localhost:8080/members/14/follows/' + memberId)
             .then(response => {
-                this.setState({
-
-                }, () => {
-                    if (response.data.length === 0 || this.state.items[this.state.items.length - 1].id === 1) {
-                        this.state.hasMorePost = false;
-                    }
-                });
+                if (response.status === 201) {
+                    this.loadMember();
+                } else {
+                    alert('혼럽에 실패했습니다. 잠시 후 다시 시도해주세요.');
+                }
             })
             .catch(response => {
                 console.log(response);
+                alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
             });
     }
 
@@ -108,6 +129,7 @@ class SearchPage extends React.Component {
                 <div>게시물이 없습니다.</div>
             );
         }
+
         return this.state.items.map(article => {
             console.log(article);
             return (
@@ -120,9 +142,13 @@ class SearchPage extends React.Component {
                     date={article.writeDate}
                     location={article.location}
                     profileImage="profile Image"
+                    honluved={article.likers.includes(14)}
                     onView={e => {
                     }}
-                    onFollow={this.follow}/>
+                    onFollow={() => {
+                        console.log('asdf');
+                        this.follow(article.author);
+                    }}/>
             );
         });
     }
@@ -165,5 +191,7 @@ class SearchPage extends React.Component {
     }
 
 }
+
+SearchPage.propTypes = propTypes;
 
 export default SearchPage;

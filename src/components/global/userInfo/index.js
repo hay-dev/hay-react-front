@@ -6,13 +6,10 @@ import ImageButton from '../imageButton';
 const propTypes = {
     className: React.PropTypes.string,
     profileImage: React.PropTypes.string.isRequired,
-    author: React.PropTypes.shape({
-        id: React.PropTypes.number.isRequired,
-        email: React.PropTypes.string.isRequired,
-        name: React.PropTypes.string
-    }).isRequired,
+    author: React.PropTypes.number.isRequired,
     date: React.PropTypes.string.isRequired,
     location: React.PropTypes.string,
+    onFollow: React.PropTypes.func.isRequired,
     actionBtn: React.PropTypes.shape({
         icon: React.PropTypes.string.isRequired,
         hoverIcon: React.PropTypes.string,
@@ -26,9 +23,6 @@ class UserInfo extends React.Component {
         super(props);
     }
 
-    follow() {
-    }
-
     render() {
         let renderSubButton = (actionBtn) => {
             if (actionBtn)
@@ -37,7 +31,8 @@ class UserInfo extends React.Component {
                     icon={actionBtn.icon}
                     hoverIcon={actionBtn.hoverIcon}
                     onClick={actionBtn.onClick}/>
-        }
+        };
+
         return (
             <div className={styles.userInfo + (this.props.className ? ' ' + this.props.className : '')}>
                 <div className={styles.profileImg}><img src={this.props.profileImage}/></div>
@@ -47,7 +42,7 @@ class UserInfo extends React.Component {
                         <ImageButton className={styles.fallowBtn}
                                      icon={'/resources/writing/following_btn_off.svg'}
                                      hoverIcon={'/resources/writing/following_btn_on.svg'}
-                                     onclick={this.follow}/>
+                                     onClick={this.props.onFollow}/>
                     </div>
                     <div>
                         <span className={styles.location}>{this.props.location}</span>
@@ -61,4 +56,5 @@ class UserInfo extends React.Component {
 }
 
 UserInfo.propTypes = propTypes;
+
 export default UserInfo;

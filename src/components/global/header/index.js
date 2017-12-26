@@ -14,11 +14,41 @@ const propTypes = {
     }))
 };
 
+const defaultProps = {
+    actions: []
+};
+
 const defaultHeaderActions = [
-    {icon: '/resources/navi/Personal_btn.svg', link: '/profile', onClick: () => {}},
-    {icon: '/resources/navi/follower_btn.svg', link: '/follower', onClick: () => {}},
-    {icon: '/resources/navi/seach_btn.svg', link: '/search', onClick: () => {}}
+    {
+        icon: '/resources/navi/Personal_btn.svg', link: '/profile', onClick: () => {
+    }
+    },
+    {
+        icon: '/resources/navi/follower_btn.svg', link: '/follower', onClick: () => {
+    }
+    },
+    {
+        icon: '/resources/navi/seach_btn.svg', link: '/search', onClick: () => {
+    }
+    }
 ];
+
+function createLinkButton(action) {
+    return (
+        <Link to={action.link}>
+            <ImageButton icon={action.icon}
+                         hoverIcon={action.hoverIcon}/>
+        </Link>
+    );
+}
+
+function createClickButton(action) {
+    return (
+        <ImageButton icon={action.icon}
+                     hoverIcon={action.hoverIcon}
+                     onClick={action.onClick}/>
+    );
+}
 
 class Header extends React.Component {
 
@@ -34,11 +64,7 @@ class Header extends React.Component {
                 return actions.map((action, index) => {
                     return (
                         <li key={index}>
-                            <Link to={action.link ? action.link : ''}>
-                                <ImageButton icon={action.icon}
-                                             hoverIcon={action.hoverIcon}
-                                             onClick={() => {}}/>
-                            </Link>
+                            {action.link ? createLinkButton(action) : createClickButton(action)}
                         </li>
                     );
                 });
@@ -49,7 +75,7 @@ class Header extends React.Component {
                 <ul>
                     <li style={{"float": "left"}}><Link to="/"><img className={styles.logo}
                                                                     src={'/resources/navi/logo.png'}/></Link></li>
-                    {renderActionItems([...defaultHeaderActions])}
+                    {renderActionItems([...defaultHeaderActions, ...this.props.actions])}
                 </ul>
             </div>
         )
@@ -57,5 +83,6 @@ class Header extends React.Component {
 }
 
 Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;
