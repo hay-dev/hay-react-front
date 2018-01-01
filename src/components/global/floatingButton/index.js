@@ -26,17 +26,6 @@ class Header extends React.Component {
         super(props);
     }
 
-    createLinkButton(actionItem) {
-        return <Link to={actionItem.link}>
-            <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}/>
-        </Link>
-    }
-
-    createClickButton(actionItem) {
-        return <ImageButton defaultIcon={actionItem.icon} hoverIcon={actionItem.hoverIcon}
-                            onClick={actionItem.onClick}/>
-    }
-
     render() {
         return (
             <div style={this.props.style} className={styles.floatingBtn}>

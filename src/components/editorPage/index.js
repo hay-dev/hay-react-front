@@ -1,7 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import axios from 'axios';
 
-import {IntlProvider, FormattedDate} from 'react-intl'
+import {FormattedDate, IntlProvider} from 'react-intl'
 
 import CKEditor from "react-ckeditor-component";
 import styles from './editorPage.css';
@@ -93,17 +94,17 @@ class EditorPage extends React.Component {
     }
 
     onLineSelected(lineStyle) {
-        let lineElem = '<hr style="border: 0; border-top: ' + lineStyle + '"/>';
+        let lineElem = '<hr style="border: 0;"' + lineStyle + '"/>';
         let newContent = this.state.content + lineElem;
         this.forceUpdateContent(newContent);
-        this.setState({'content': newContent})
+        this.setState({'content': newContent});
     }
 
     onImageSelected(imageData) {
         let imageElem = '<img style="width:500px; display:block;" src="' + imageData + '"/>';
         let newContent = this.state.content + imageElem;
         this.forceUpdateContent(newContent);
-        this.setState({'content': newContent})
+        this.setState({'content': newContent});
     }
 
     forceUpdateContent(newContent) {
@@ -149,9 +150,16 @@ class EditorPage extends React.Component {
                 </div>
                 <Footer/>
             </div>
-        )
+        );
     }
-
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.token
+    }
+};
+
+EditorPage = connect(mapStateToProps)(EditorPage);
 
 export default EditorPage;

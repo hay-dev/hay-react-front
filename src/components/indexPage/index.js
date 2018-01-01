@@ -1,5 +1,6 @@
 import React from 'react';
-import { List } from 'immutable';
+import {connect} from 'react-redux';
+import {List} from 'immutable';
 
 import styles from './Index.css';
 
@@ -75,19 +76,19 @@ class IndexPage extends React.Component {
             return this.state.articles.map(article => {
                 return (
                     <Article key={article.id}
-                                 id={article.id}
-                                 title={article.title}
-                                 summary={article.content}
-                                 writeDate={article.writeDate}
-                                 weather={article.weather}
-                                 location={article.location}
-                                 commentCnt={article.comments.length}
-                                 likeCnt={article.likers.length}
-                                 tags={["hashtag"]}
-                                 onModify={() => {
-                                 }}
-                                 onDelete={() => {
-                                 }}/>
+                             id={article.id}
+                             title={article.title}
+                             summary={article.content}
+                             writeDate={article.writeDate}
+                             weather={article.weather}
+                             location={article.location}
+                             commentCnt={article.comments.length}
+                             likeCnt={article.likers.length}
+                             tags={["hashtag"]}
+                             onModify={() => {
+                             }}
+                             onDelete={() => {
+                             }}/>
                 )
             });
         };

@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { List } from 'immutable';
 
@@ -39,7 +41,12 @@ class SearchPage extends React.Component {
     }
 
     loadMember() {
-        axios.get('http://localhost:8080/members/' + this.props.id)
+        let config = {
+            headers: {
+                'Authorization': 'Bearer ' + this.props.token
+            }
+        };
+        axios.get('http://localhost:8080/members/' + this.props.id, config)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -189,8 +196,15 @@ class SearchPage extends React.Component {
             </div>
         );
     }
-
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.token
+    };
+};
+
+SearchPage = connect(mapStateToProps)(SearchPage);
 
 SearchPage.propTypes = propTypes;
 

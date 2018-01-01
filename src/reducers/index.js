@@ -1,8 +1,24 @@
-import { combineReducers } from 'redux';
-import IndexPageReducer from './IndexPage/IndexPageReducer';
+import {LOG_IN, LOG_OUT} from "../actions";
 
-const reducers = combineReducers({
-  IndexPageReducer
-});
+const initialState = {
+    token: 'test'
+};
 
-export default reducers;
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOG_IN:
+            return Object.assign({}, state, {
+                token: action.token
+            });
+            break;
+        case LOG_OUT:
+            return {
+                token: ''
+            };
+            break;
+        default:
+            return state;
+    }
+};
+
+export default reducer;
