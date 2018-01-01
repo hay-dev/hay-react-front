@@ -27,7 +27,7 @@ class IndexPage extends React.Component {
     }
 
     loadMore() {
-        if (this.state.articles.length === 0) {
+        if (this.state.articles.size === 0) {
             this.loadRecentPostItem();
         } else {
             this.loadPostItem();
@@ -42,7 +42,7 @@ class IndexPage extends React.Component {
                 this.setState({
                     articles: this.state.articles.push(response.data)
                 });
-                if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
+                if (response.data.size === 0 || this.state.articles.get(-1).id === 1) {
                     this.state.hasMorePost = false;
                 }
             })
@@ -53,14 +53,14 @@ class IndexPage extends React.Component {
     }
 
     loadPostItem() {
-        axios.get('http://localhost:8080/articles/' + (this.state.articles[this.state.articles.length - 1].id - 1))
+        axios.get('http://localhost:8080/articles/' + (this.state.articles.get(-1).id - 1))
             .then(response => {
                 console.log("Loading post item successful.");
                 console.log(response);
                 this.setState({
                     articles: this.state.articles.push(response.data)
                 });
-                if (response.data.length === 0 || this.state.articles[this.state.articles.length - 1].id === 1) {
+                if (response.data.size === 0 || this.state.articles.get(-1).id === 1) {
                     this.state.hasMorePost = false;
                 }
             })
